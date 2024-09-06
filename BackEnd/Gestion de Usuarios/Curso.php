@@ -1,26 +1,27 @@
 <?php
 class Curso
 {
-    private int $documentoInstructor;
-    private int $documentoAlumno;
-    private int $matricula;
+    private String $documentoAlumno;
+    private String $documentoInstructor;
+    private String $matricula;
+    private int $precio;
     private String $hora;
     private String $fecha;
     private String $tipoLibreta;
-    private String $estado;
-    private int $precio;
-
-
-    public function __construct(int $documentoInstructor, int $documentoAlumno, int $matricula, String $hora, String $fecha, String $tipoLibreta, String $estado, int $precio)
+    private String $resultado;
+    private String $tipo;
+ 
+    public function __construct(String $documentoAlumno, String $documentoInstructor, String $matricula, int $precio ,String $hora, String $fecha, String $tipoLibreta, String $resultado, String $tipo)
     {
         $this->documentoInstructor = $documentoInstructor;
         $this->documentoAlumno = $documentoAlumno;
         $this->matricula = $matricula;
+        $this->precio = $precio;
         $this->hora = $hora;
         $this->fecha = $fecha;
         $this->tipoLibreta = $tipoLibreta;
-        $this->estado = $estado;
-        $this->precio = $precio;
+        $this->resultado = $resultado;
+        $this->tipo = $tipo;
     }
 
     /* Getters */
@@ -40,6 +41,11 @@ class Curso
         return $this->matricula;
     }
 
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
     public function getHora()
     {
         return $this->hora;
@@ -55,63 +61,70 @@ class Curso
         return $this->tipoLibreta;
     }
 
-    public function getEstado()
+    public function getResultado()
     {
-        return $this->estado;
+        return $this->resultado;
     }
 
-    public function getPrecio()
+    public function getTipo()
     {
-        return $this->precio;
+        return $this->tipo;
     }
+
+
 
     /* Setters */
 
-    public function setDocumentoInstructor(int $docIns)
+    public function setDocumentoInstructor(String $documentoInstructor)
     {
-        $this->documentoInstructor = $docIns;
+        $this->documentoInstructor = $documentoInstructor;
     }
 
-    public function setDocumentoAlumno(int $docAl)
+    public function setDocumentoAlumno(String $documentoAlumno)
     {
-        $this->documentoAlumno = $docAl;
+        $this->documentoAlumno = $documentoAlumno;
     }
 
-    public function setMatricula(int $mat)
+    public function setMatricula(String $matricula)
     {
-        $this->matricula = $mat;
+        $this->matricula = $matricula;
     }
 
-    public function setHora(String $hor)
+    public function setPrecio(int $precio)
     {
-        $this->hora = $hor;
+        $this->precio = $precio;
     }
 
-    public function setFecha(String $fec)
+    public function setHora(String $hora)
     {
-        $this->fecha = $fec;
+        $this->hora = $hora;
     }
 
-    public function setTipoLibreta(String $tipLib)
+    public function setFecha(String $fecha)
     {
-        $this->tipoLibreta = $tipLib;
+        $this->fecha = $fecha;
     }
 
-    public function setEstado(String $est)
+    public function setTipoLibreta(String $tipoLibreta)
     {
-        $this->estado = $est;
+        $this->tipoLibreta = $tipoLibreta;
     }
 
-    public function setPrecio(int $pre)
+    public function setResultado(String $resultado)
     {
-        $this->precio = $pre;
+        $this->resultado = $resultado;
     }
 
+    public function setTipo(String $tipo)
+    {
+        $this->tipo = $tipo;
+    }
 
+    
     /* To String */
 
     public function __toString()
     {
-        return ($this->documentoInstructor . "," . $this->documentoAlumno . "," . $this->matricula . "," . $this->hora . "," . $this->fecha . "," . $this->tipoLibreta . "," . $this->estado . "," . $this->precio);
+        return "Documento Alumno: " . $this->documentoAlumno . " Documento Instructor: " . $this->documentoInstructor . " Matricula: " . $this->matricula . " Precio: " . $this->precio . " Hora: " . $this->hora . " Fecha: " . $this->fecha . " Tipo Libreta: " . $this->tipoLibreta . " Resultado: " . $this->resultado . " Tipo: " . $this->tipo;
     }
 }

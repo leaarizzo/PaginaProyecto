@@ -53,7 +53,7 @@ class BaseDatos
         $permisos = $usuario->getPermisos();
         $fechaIns = $usuario->getFechaIns();
 
-        $insertar = "insert into alumno values('$documento','$nombre','$apellido','$fechaNac','$telefono','$correo','$username','$password','$estadoTeorico','$permisos', '$fechaIns')";
+        $insertar = "insert into alumno values('$documento','$nombre','$apellido','$fechaNac','$telefono','$correo','$username','$password','$estadoTeorico','$permisos', '$fechaIns', 1)";
         return mysqli_query($this->conexion, $insertar);
     }
 
@@ -81,17 +81,17 @@ class BaseDatos
         $password = $usuario->getPassword();
         $permisos = $usuario->getPermisos();
 
-        $insertar = "insert into instructor values('$documento','$nombre','$apellido','$fechaNac','$telefono','$correo','$username','$password','$permisos')";
+        $insertar = "insert into instructor values('$documento','$nombre','$apellido','$fechaNac','$telefono','$correo','$username','$password','$permisos', 1)";
         return mysqli_query($this->conexion, $insertar);
     }
 
     public function ingresarCategoriaInstructores($usuario)
     {
         $documento = $usuario->getDocumento();
-        $categoriaClase = $usuario->getCategoriaClase();
+        $categoriacurso = $usuario->getCategoriacurso();
 
-        for ($i = 0; $i < count($usuario->getCategoriaClase()); $i++) {
-            $insertar = "insert into instructor_categoria values('$documento','$categoriaClase[$i]')";
+        for ($i = 0; $i < count($usuario->getCategoriacurso()); $i++) {
+            $insertar = "insert into instructor_categoria values('$documento','$categoriacurso[$i]')";
             mysqli_query($this->conexion, $insertar);
         }
     }
@@ -119,7 +119,7 @@ class BaseDatos
         $password = $usuario->getPassword();
         $permisos = $usuario->getPermisos();
 
-        $insertar = "insert into administrador values('$documento','$nombre','$apellido','$fechaNac','$telefono','$correo','$username','$password','$permisos')";
+        $insertar = "insert into administrador values('$documento','$nombre','$apellido','$fechaNac','$telefono','$correo','$username','$password','$permisos', 1)";
         return mysqli_query($this->conexion, $insertar);
     }
 
@@ -136,45 +136,27 @@ class BaseDatos
         $kilometraje = $vehiculo->getKilometraje();
         $categoria = $vehiculo->getCategoria();
 
-        $insertar = "insert into vehiculo values('$matricula','$modelo','$motor','$combustible','$medida','$situacionActual','$kilometraje','$categoria')";
+        $insertar = "insert into vehiculo values('$matricula','$modelo','$motor','$combustible','$medida','$situacionActual','$kilometraje','$categoria', 1)";
         return mysqli_query($this->conexion, $insertar);
     }
 
     // Altas de Cursos en Tablas   
 
-    public function ingresarClase($clase)
-    {
-        $codigoClase = $clase->getCodigoClase();
-        $documentoInstructor = $clase->getDocumentoInstructor();
-        $documentoAlumno = $clase->getDocumentoAlumno();
-        $matricula = $clase->getMatricula();
-        $hora = $clase->getHora();
-        $fecha = $clase->getFecha();
-        $tipoLibreta = $clase->getTipoLibreta();
-        $estado = $clase->getEstado();
-        $precio = $clase->getPrecio();
+    public function ingresarCurso($curso){
+    $codigoAlumno = $curso->getDocumentoAlumno();
+    $codigoInstructor = $curso->getDocumentoInstructor();
+    $matricula = $curso->getMatricula();
+    $precio = $curso->getPrecio();
+    $hora = $curso->getHora();
+    $fecha = $curso->getFecha();
+    $tipoLibreta = $curso->getTipoLibreta();
+    $resultado = $curso->getResultado();
+    $tipo = $curso->getTipo();
 
-        $insertar = "insert into clase values('$codigoClase','$documentoInstructor','$documentoAlumno','$matricula','$hora','$fecha','$tipoLibreta','$estado','$precio')";
-        return mysqli_query($this->conexion, $insertar);
+    $insertar = "insert into curso values('','$codigoAlumno','$codigoInstructor','$matricula','$precio','$hora','$fecha','$tipoLibreta','$resultado','$tipo', 1)";
+    return mysqli_query($this->conexion, $insertar);
     }
-
-    public function ingresarPrueba($prueba)
-    {
-        $codigoPrueba = $prueba->getCodigoPrueba();
-        $documentoInstructor = $prueba->getDocumentoInstructor();
-        $documentoAlumno = $prueba->getDocumentoAlumno();
-        $matricula = $prueba->getMatricula();
-        $hora = $prueba->getHora();
-        $fecha = $prueba->getFecha();
-        $tipoLibreta = $prueba->getTipoLibreta();
-        $estado = $prueba->getEstado();
-        $precio = $prueba->getPrecio();
-
-        $insertar = "insert into prueba values('$codigoPrueba','$documentoInstructor','$documentoAlumno','$matricula','$hora','$fecha','$tipoLibreta','$estado','$precio')";
-        return mysqli_query($this->conexion, $insertar);
-    }
-
-
+    
     /**************************************/
     /*               BAJAS                */
     /**************************************/
@@ -183,19 +165,19 @@ class BaseDatos
 
     public function eliminarAlumno($documento)
     {
-        $eliminar = "delete from alumno where documentoAlumno = '$documento'";
+        $eliminar = "update alumno set activo = 0 where documentoAlumno = '$documento'";
         return mysqli_query($this->conexion, $eliminar);
     }
 
     public function eliminarInstructor($documento)
     {
-        $eliminar = "delete from instructor where documentoInstructor = '$documento'";
+        $eliminar = "update instructor set activo = 0 where documentoInstructor = '$documento'";
         return mysqli_query($this->conexion, $eliminar);
     }
 
     public function eliminarAdministrador($documento)
     {
-        $eliminar = "delete from administrador where documentoAdmin = '$documento'";
+        $eliminar = "update administrador set activo = 0 where documentoAdmin = '$documento'";
         return mysqli_query($this->conexion, $eliminar);
     }
 
@@ -220,24 +202,22 @@ class BaseDatos
     // Bajas de Vehiculos en Tablas
     public function eliminarVehiculo($matricula)
     {
-        $eliminar = "delete from vehiculo where matricula = '$matricula'";
+        $eliminar = "update vehiculo set activo = 0 where matricula = '$matricula'";
         return mysqli_query($this->conexion, $eliminar);
     }
 
     // Bajas de Cursos en Tablas
 
-    public function eliminarClase($codigoClase)
+    public function eliminarCurso($codigocurso, $opcion)
     {
-        $eliminar = "delete from clase where codigoClase = '$codigoClase'";
-        return mysqli_query($this->conexion, $eliminar);
+        if ($opcion == "baja"){
+            $eliminar = "update curso set activo = 0 where codigo = '$codigocurso'";
+            return mysqli_query($this->conexion, $eliminar);
+        } else if ($opcion == "reactivar"){
+            $eliminar = "update curso set activo = 1 where codigo = '$codigocurso'";
+            return mysqli_query($this->conexion, $eliminar);
+        }
     }
-
-    public function eliminarPrueba($codigoPrueba)
-    {
-        $eliminar = "delete from prueba where codigoPrueba = '$codigoPrueba'";
-        return mysqli_query($this->conexion, $eliminar);
-    }
-
 
     /**************************************/
     /*           MODIFICACIONES           */
@@ -302,6 +282,7 @@ class BaseDatos
                 for ($i = 0; $i < count($nuevo); $i++) {
                     $modificar = "insert into alumno_libreta values('$documento','$nuevo[$i]')";
                     mysqli_query($this->conexion, $modificar);
+                    
                 }
                 break;
         }
@@ -351,7 +332,7 @@ class BaseDatos
                 break;
 
 
-            case 'categoriaClase':
+            case 'categoriacurso':
                 $this->eliminarCategoriaInstructor($documento);
                 for ($i = 0; $i < count($nuevo); $i++) {
                     $modificar = "insert into instructor_categoria values('$documento','$nuevo[$i]')";
@@ -457,82 +438,49 @@ class BaseDatos
 
     // Modificaciones de Cursos en Tablas
 
-    public function modificarClase($codigoClase, $dato, $nuevo)
+    public function modificarCurso($codigocurso, $dato, $nuevo)
     {
         switch ($dato) {
-            case 'documentoInstructor':
-                $modificar = "update clase set documentoInstructor = '$nuevo' where codigoClase = '$codigoClase'";
+            case 'codigoAlumno':
+                $modificar = "update curso set codigoAlumno = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
-            case 'documentoAlumno':
-                $modificar = "update clase set documentoAlumno = '$nuevo' where codigoClase = '$codigoClase'";
+            case 'codigoInstructor':
+                $modificar = "update curso set codigoInstructor = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'matricula':
-                $modificar = "update clase set matricula = '$nuevo' where codigoClase = '$codigoClase'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-            case 'hora':
-                $modificar = "update clase set hora = '$nuevo' where codigoClase = '$codigoClase'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-            case 'fecha':
-                $modificar = "update clase set fecha = '$nuevo' where codigoClase = '$codigoClase'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-            case 'tipoLibreta':
-                $modificar = "update clase set tipoLibreta = '$nuevo' where codigoClase = '$codigoClase'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-            case 'estado':
-                $modificar = "update clase set estado = '$nuevo' where codigoClase = '$codigoClase'";
+                $modificar = "update curso set matricula = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'precio':
-                $modificar = "update clase set precio = '$nuevo' where codigoClase = '$codigoClase'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-        }
-    }
-
-
-    public function modificarPrueba($codigoPrueba, $dato, $nuevo)
-    {
-        switch ($dato) {
-            case 'documentoInstructor':
-                $modificar = "update prueba set documentoInstructor = '$nuevo' where codigoPrueba = '$codigoPrueba'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-            case 'documentoAlumno':
-                $modificar = "update prueba set documentoAlumno = '$nuevo' where codigoPrueba = '$codigoPrueba'";
-                mysqli_query($this->conexion, $modificar);
-                break;
-            case 'matricula':
-                $modificar = "update prueba set matricula = '$nuevo' where codigoPrueba = '$codigoPrueba'";
+                $modificar = "update curso set precio = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'hora':
-                $modificar = "update prueba set hora = '$nuevo' where codigoPrueba = '$codigoPrueba'";
+                $modificar = "update curso set hora = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'fecha':
-                $modificar = "update prueba set fecha = '$nuevo' where codigoPrueba = '$codigoPrueba'";
+                $modificar = "update curso set fecha = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'tipoLibreta':
-                $modificar = "update prueba set tipoLibreta = '$nuevo' where codigoPrueba = '$codigoPrueba'";
+                $modificar = "update curso set tipoLibreta = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
-            case 'estado':
-                $modificar = "update prueba set estado = '$nuevo' where codigoPrueba = '$codigoPrueba'";
+            case 'resultado':
+                $modificar = "update curso set resultado = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
-            case 'precio':
-                $modificar = "update prueba set precio = '$nuevo' where codigoPrueba = '$codigoPrueba'";
+            case 'tipo':
+                $modificar = "update curso set tipo = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
+            
         }
     }
+
 
     /**************************************/
     /*           LOG IN                   */
@@ -617,7 +565,7 @@ class BaseDatos
 
     public function seleccionarAdmin($username)
     {
-        $resultadoAlumno = mysqli_query($this->conexion, "select * from administrador where username = '$username'");
+        $resultadoAlumno = mysqli_query($this->conexion, "select * from administrador where username = '$username' and activo = 1");
         $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
         return $arreglo;
     }
@@ -625,7 +573,7 @@ class BaseDatos
 
     public function seleccionarAlumno($username)
     {
-        $resultadoAlumno = mysqli_query($this->conexion, "select * from alumno where username = '$username'");
+        $resultadoAlumno = mysqli_query($this->conexion, "select * from alumno where username = '$username' and activo = 1");
         $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
         return $arreglo;
     }
@@ -633,14 +581,14 @@ class BaseDatos
 
     public function seleccionarInstructor($username)
     {
-        $resultadoAlumno = mysqli_query($this->conexion, "select * from instructor where username = '$username'");
+        $resultadoAlumno = mysqli_query($this->conexion, "select * from instructor where username = '$username' and activo = 1");
         $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
         return $arreglo;
     }
 
     public function seleccionarAlumnos()
     {
-        $resultadoAlumnos = mysqli_query($this->conexion, "select * from alumno");
+        $resultadoAlumnos = mysqli_query($this->conexion, "select * from alumno where activo = 1");
         $arreglo = mysqli_fetch_all($resultadoAlumnos, MYSQLI_ASSOC);
         return $arreglo;
     }
@@ -654,15 +602,15 @@ class BaseDatos
 
     public function seleccionarInstructores()
     {
-        $resultadoInstructores = mysqli_query($this->conexion, "select * from instructor");
+        $resultadoInstructores = mysqli_query($this->conexion, "select * from instructor where activo = 1");
         $arreglo = mysqli_fetch_all($resultadoInstructores, MYSQLI_ASSOC);
         return $arreglo;
     }
 
-    public function seleccionarCategoriaClase()
+    public function seleccionarCategoriacurso()
     {
-        $resultadoCategoriaClase = mysqli_query($this->conexion, "select * from instructor_categoria");
-        $arreglo = mysqli_fetch_all($resultadoCategoriaClase, MYSQLI_ASSOC);
+        $resultadoCategoriacurso = mysqli_query($this->conexion, "select * from instructor_categoria");
+        $arreglo = mysqli_fetch_all($resultadoCategoriacurso, MYSQLI_ASSOC);
         return $arreglo;
     }
 
@@ -675,29 +623,22 @@ class BaseDatos
 
     public function seleccionarAdministradores()
     {
-        $resultadoAdministrador = mysqli_query($this->conexion, "select * from administrador");
+        $resultadoAdministrador = mysqli_query($this->conexion, "select * from administrador where activo = 1");
         $arreglo = mysqli_fetch_all($resultadoAdministrador, MYSQLI_ASSOC);
         return $arreglo;
     }
 
     public function seleccionarVehiculos()
     {
-        $resultadoVehiculos = mysqli_query($this->conexion, "select * from vehiculo");
+        $resultadoVehiculos = mysqli_query($this->conexion, "select * from vehiculo where activo = 1");
         $arreglo = mysqli_fetch_all($resultadoVehiculos, MYSQLI_ASSOC);
         return $arreglo;
     }
 
-    public function seleccionarClases()
+    public function seleccionarCursos()
     {
-        $resultadoClases = mysqli_query($this->conexion, "select * from clase");
-        $arreglo = mysqli_fetch_all($resultadoClases, MYSQLI_ASSOC);
-        return $arreglo;
-    }
-
-    public function seleccionarpruebas()
-    {
-        $resultadoPruebas = mysqli_query($this->conexion, "select * from prueba");
-        $arreglo = mysqli_fetch_all($resultadoPruebas, MYSQLI_ASSOC);
+        $resultadocursos = mysqli_query($this->conexion, "select * from curso where activo = 1");
+        $arreglo = mysqli_fetch_all($resultadocursos, MYSQLI_ASSOC);
         return $arreglo;
     }
 

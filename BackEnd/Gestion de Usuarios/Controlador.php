@@ -5,11 +5,9 @@ require_once 'Administrador.php';
 require_once 'Alumno.php';
 require_once 'Vehiculo.php';
 require_once 'BaseDatos.php';
-require_once 'Clase.php';
-require_once 'Prueba.php';
+require_once 'Curso.php';
 
-class Controlador
-{
+class Controlador{
 
     private $base;
 
@@ -63,20 +61,13 @@ class Controlador
 
     /* Alta Cursos */
 
-    public function altaClase(int $codigoClase, int $documentoInstructor, int $documentoAlumno, int $matricula, String $hora, String $fecha, String $tipoLibreta, String $estado, int $precio)
+    public function altaCurso(string $documentoAlumno, string $documentoInstructor, string $matricula, int $precio, string $hora, string $fecha, string $tipoLibreta, string $resultado, string $tipo)
     {
-        $clase = new Clase($codigoClase, $documentoInstructor, $documentoAlumno, $matricula, $hora, $fecha, $tipoLibreta, $estado, $precio);
-        $this->base->ingresarClase($clase);
+        $curso = new Curso($documentoAlumno, $documentoInstructor, $matricula, $precio, $hora, $fecha, $tipoLibreta, $resultado, $tipo, true);
+        $this->base->ingresarCurso($curso);
     }
 
-    public function altaPrueba(int $codigoPrueba, int $documentoInstructor, int $documentoAlumno, int $matricula, String $hora, String $fecha, String $tipoLibreta, String $estado, int $precio)
-    {
-        $prueba = new Prueba($codigoPrueba, $documentoInstructor, $documentoAlumno, $matricula, $hora, $fecha, $tipoLibreta, $estado, $precio);
-        $this->base->ingresarPrueba($prueba);
-    }
-
-
-
+    
 
     /********************************/
     /*           BAJAS              */
@@ -111,15 +102,12 @@ class Controlador
 
     /* Baja Cursos */
 
-    public function bajaClase(String $codigoClase)
+    public function bajaCurso(String $codigoClase, String $opcion)
     {
-        $this->base->eliminarClase($codigoClase);
+        $this->base->eliminarCurso($codigoClase, $opcion);
+        
     }
 
-    public function bajaPrueba(String $codigoPrueba)
-    {
-        $this->base->eliminarPrueba($codigoPrueba);
-    }
 
 
     /********************************/
@@ -154,14 +142,8 @@ class Controlador
 
     public function modificarClase($codigoClase, $dato, $nuevo)
     {
-        $this->base->modificarClase($codigoClase, $dato, $nuevo);
+        $this->base->modificarCurso($codigoClase, $dato, $nuevo);
     }
-
-    public function modificarPrueba($codigoPrueba, $dato, $nuevo)
-    {
-        $this->base->modificarPrueba($codigoPrueba, $dato, $nuevo);
-    }
-
 
     /********************************/
     /*           LOG IN             */
@@ -234,7 +216,7 @@ class Controlador
     {
         echo ('<pre>');
         echo ('Categoria - Instructor');
-        print_r($this->base->seleccionarCategoriaClase());
+        print_r($this->base->seleccionarCategoriaCurso());
         echo ('</pre>');
     }
 
@@ -262,15 +244,7 @@ class Controlador
     {
         echo ('<pre>');
         echo ('Clases');
-        print_r($this->base->seleccionarClases());
-        echo ('</pre>');
-    }
-
-    public function traerTablaPruebas()
-    {
-        echo ('<pre>');
-        echo ('Pruebas');
-        print_r($this->base->seleccionarPruebas());
+        print_r($this->base->seleccionarCursos());
         echo ('</pre>');
     }
 }

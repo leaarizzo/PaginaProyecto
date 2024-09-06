@@ -29,13 +29,7 @@
 		<div class="col-md-12">
       <br>
 
-      <div class="form-group">
-        <select id="txtOpcion" name="txtOpcion" class="form-control"> 
-            <option value="clase"> Clase </option> 
-            <option value="prueba"> Prueba </option>
-    </select>
-    </div>
-			
+
 
   <!-- Codigo -->
   <div class="form-group">
@@ -53,6 +47,8 @@
             <option value = "tipoLibreta"> Tipo Libreta </option>
             <option value = "estado"> Estado </option>
             <option value = "precio"> Precio </option>
+            <option value = "resultado"> Resultado </option>
+            <option value = "tipo"> Tipo </option>
         </select>
     </div>
 
@@ -60,6 +56,13 @@
   <div class="form-group">
     <input type="text" name="txtNuevo" id="txtNuevo" class="form-control" placeholder="Nuevo Dato">
 	</div>
+
+<!-- Tipo -->
+<div class="form-group">
+    <select id="txtTipo" name="txtTipo" class="form-control" placeholder="Tipo">
+        <option value = "clase"> Clase </option>
+        <option value = "prueba"> Prueba </option>
+    </select>
 
 	<!-- Boton -->
 	<div>

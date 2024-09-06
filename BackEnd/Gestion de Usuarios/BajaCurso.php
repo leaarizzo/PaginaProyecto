@@ -1,18 +1,12 @@
 <?php
 require_once 'Controlador.php';
-require_once 'Clase.php';
-require_once 'Prueba.php';
+require_once 'Curso.php';
 $controla = new Controlador();
 
-$tipo = $_POST['txtOpcion'];
-
+$opcion = $_POST['txtOpcion'];
 $codigoClase = $_POST['txtCodigo'];
-$codigoPrueba = $_POST['txtCodigo'];
 
-if ($tipo == "clase") {
-    $controla->BajaClase($codigoClase);
-} elseif ($tipo == "prueba") {
-    $controla->BajaPrueba($codigoPrueba);
-}
+$controla->bajaCurso($codigoClase, $opcion);
+
 
 header('Location: vista.html.php');

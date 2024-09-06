@@ -35,8 +35,8 @@
 	
       <div class="form-group">
         <select id="txtOpcion" name="txtOpcion" class="form-control"> 
-          <option value="clase"> Clase </option> 
-          <option value="prueba"> Prueba </option>
+          <option value="baja"> Baja </option> 
+          <option value="reactivar"> Reactivar </option>
         </select>
       </div>
 

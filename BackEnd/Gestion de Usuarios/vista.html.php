@@ -21,8 +21,7 @@
     $controla->traerTablaHorarios();
     $controla->traerTablaVehiculos();
     $controla->traerTablaClases();
-    $controla->traerTablaPruebas();
-    ?>
+  ?>
 
 </body>
 
