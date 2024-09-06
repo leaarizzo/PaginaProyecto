@@ -5,7 +5,8 @@ $controla = new Controlador();
 
 
 $matricula = $_POST['txtMatricula'];
+$opcion = $_POST['txtOpcion'];
 
-$controla->BajaVehiculo($matricula);
+$controla->BajaVehiculo($matricula, $opcion);
 
 header('Location: vista.html.php');

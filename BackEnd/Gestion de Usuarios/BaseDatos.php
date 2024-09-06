@@ -163,22 +163,36 @@ class BaseDatos
 
     // Bajas de Usuarios en Tablas
 
-    public function eliminarAlumno($documento)
+    public function eliminarAlumno($documento, $opcion)
     {
-        $eliminar = "update alumno set activo = 0 where documentoAlumno = '$documento'";
-        return mysqli_query($this->conexion, $eliminar);
+        if ($opcion == "baja") {
+            $eliminar = "update alumno set activo = 0 where documentoAlumno = '$documento'";
+            return mysqli_query($this->conexion, $eliminar);
+        } else if ($opcion == "reactivar") {
+            $eliminar = "update alumno set activo = 1 where documentoAlumno = '$documento'";
+            return mysqli_query($this->conexion, $eliminar);
+        }
     }
 
-    public function eliminarInstructor($documento)
+    public function eliminarInstructor($documento, $opcion)
     {
-        $eliminar = "update instructor set activo = 0 where documentoInstructor = '$documento'";
-        return mysqli_query($this->conexion, $eliminar);
+        if ($opcion == "baja") {
+            $eliminar = "update instructor set activo = 0 where documentoInstructor = '$documento'";
+            return mysqli_query($this->conexion, $eliminar);
+        } else if ($opcion == "reactivar") {
+            $eliminar = "update instructor set activo = 1 where documentoInstructor = '$documento'";
+            return mysqli_query($this->conexion, $eliminar);
+        }
     }
 
-    public function eliminarAdministrador($documento)
-    {
-        $eliminar = "update administrador set activo = 0 where documentoAdmin = '$documento'";
-        return mysqli_query($this->conexion, $eliminar);
+    public function eliminarAdministrador($documento, $opcion){
+        if ($opcion == "baja"){
+            $eliminar = "update administrador set activo = 0 where documentoAdmin = '$documento'";
+            return mysqli_query($this->conexion, $eliminar);
+        } else if ($opcion == "reactivar"){
+            $eliminar = "update administrador set activo = 1 where documentoAdmin = '$documento'";
+            return mysqli_query($this->conexion, $eliminar);
+        }    
     }
 
     public function eliminarCategoriaAlumno($documento)
@@ -200,10 +214,15 @@ class BaseDatos
     }
 
     // Bajas de Vehiculos en Tablas
-    public function eliminarVehiculo($matricula)
+    public function eliminarVehiculo($matricula, $opcion)
     {
-        $eliminar = "update vehiculo set activo = 0 where matricula = '$matricula'";
-        return mysqli_query($this->conexion, $eliminar);
+        if ($opcion == "baja") {
+            $eliminar = "update vehiculo set activo = 0 where matricula = '$matricula'";
+            return mysqli_query($this->conexion, $eliminar);
+        } else if ($opcion == "reactivar") {
+            $eliminar = "update vehiculo set activo = 1 where matricula = '$matricula'";
+            return mysqli_query($this->conexion, $eliminar);
+        }
     }
 
     // Bajas de Cursos en Tablas

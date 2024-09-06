@@ -5,16 +5,17 @@ require_once 'Instructor.php';
 require_once 'Administrador.php';
 $controla = new Controlador();
 
-$tipo = $_POST['txtOpcion'];
+$tipo = $_POST['txtTipo'];
+$opcion = $_POST['txtOpcion'];
 
 $documento = $_POST['txtDocumento'];
 
 if ($tipo == "alumno") {
-    $controla->BajaAlumno($documento);
+    $controla->BajaAlumno($documento, $opcion);
 } elseif ($tipo == "instructor") {
-    $controla->BajaInstructor($documento);
+    $controla->BajaInstructor($documento, $opcion);
 } elseif ($tipo == "administrador") {
-    $controla->BajaAdministrador($documento);
+    $controla->BajaAdministrador($documento, $opcion);
 }
 
 header('Location: vista.html.php');

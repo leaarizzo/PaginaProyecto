@@ -34,12 +34,19 @@
 			
 	<!-- Opcion -->
 	<div class="form-group">
-		<select id="txtOpcion" name="txtOpcion" class="form-control"> 
+		<select id="txtTipo" name="txtTipo" class="form-control"> 
 			<option value="alumno"> Alumno </option> 
 			<option value="instructor"> Instructor </option>
 			<option value="administrador"> Administrador </option> 	
     </select>
 	</div>
+
+	<div class="form-group">
+        <select id="txtOpcion" name="txtOpcion" class="form-control"> 
+          <option value="baja"> Baja </option> 
+          <option value="reactivar"> Reactivar </option>
+        </select>
+      </div>
 
   <!-- Documento -->
   <div class="form-group">

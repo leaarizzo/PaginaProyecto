@@ -75,29 +75,29 @@ class Controlador{
 
     /* Baja Usuarios */
 
-    public function bajaAlumno(String $documento)
+    public function bajaAlumno(String $documento, String $opcion)
     {
         $this->base->eliminarCategoriaAlumno($documento);
-        $this->base->eliminarAlumno($documento);
+        $this->base->eliminarAlumno($documento, $opcion);
     }
 
-    public function bajaInstructor(String $documento)
+    public function bajaInstructor(String $documento, String $opcion)
     {
         $this->base->eliminarCategoriaInstructor($documento);
         $this->base->eliminarHorariosInstructor($documento);
-        $this->base->eliminarInstructor($documento);
+        $this->base->eliminarInstructor($documento, $opcion);
     }
 
-    public function bajaAdministrador(String $documento)
+    public function bajaAdministrador(String $documento, String $opcion)
     {
-        $this->base->eliminarAdministrador($documento);
+        $this->base->eliminarAdministrador($documento, $opcion);
     }
 
     /* Baja Vehiculo */
 
-    public function bajaVehiculo(String $matricula)
+    public function bajaVehiculo(String $matricula, String $opcion)
     {
-        $this->base->eliminarVehiculo($matricula);
+        $this->base->eliminarVehiculo($matricula, $opcion);
     }
 
     /* Baja Cursos */

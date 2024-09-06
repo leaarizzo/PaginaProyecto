@@ -32,7 +32,12 @@
 
       <br>
 			
-	
+      <div class="form-group">
+        <select id="txtOpcion" name="txtOpcion" class="form-control"> 
+          <option value="baja"> Baja </option> 
+          <option value="reactivar"> Reactivar </option>
+        </select>
+      </div>
 
   <!-- Matricula -->
   <div class="form-group">
