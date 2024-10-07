@@ -305,16 +305,11 @@ footer .social-icons a {
     z-index: -1;
   }
   
-  .ul1 .li1 .a1:hover:before {
-    transform: scale(1.2);
-    box-shadow: 0 0 15px #d35400;
-    filter: blur(3px);
-  }
   
 
   .site-footer {
     background-color: #000;
-    color: #fff;
+    color: #ff0000;
     padding: 2rem 0 1rem; 
     position: relative;
     width: 100%;
@@ -397,7 +392,7 @@ footer .social-icons a {
     }
 
     .ul1 .li1 {
-        margin: 0 15px 15px;
+        margin: 0 10px 10px;
     }
 }
 
