@@ -290,15 +290,7 @@ footer .social-icons a {
         margin-bottom: 2rem;
     }
 }
-.hola{
-    font-size: 6rem;
-    color: white;
-    text-align: center;
-    padding-top: 100px;
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  
-  
+   
   .ul1 .li1 .a1:before {
     content: '';
     position: absolute;
@@ -529,6 +521,40 @@ footer .social-icons a {
       width: 90%;
       padding: 40px 25px;
     }
+}
+
+  .titulo{
+    color: white;
+    text-align: left;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    padding-left: 100Px;
+    font-family: 'Bebas Neue', sans-serif;
   }
+
+  .Subtitulo{
+    color: rgb(93, 93, 93);
+    text-align: left;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .info{
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+  }
+
+.contentNos{
+    display: flex;
+    justify-content: center;
+    padding-left: 50px;
+}  
+
+.imgNos{
+    width: 800px;
+    height: 650px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
 
   
