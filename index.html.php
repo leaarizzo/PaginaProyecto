@@ -131,7 +131,7 @@
         <div class="footer-abajo">
           <a href="#" class="footer-link">Servicios</a>
           <a href="guestLandingSpanish.html" class="footer-logo">
-            <img src="../../../img/logo.png" alt="Logo" width="200" height="67">
+            <img src="Frontend/img/logo.png"Logo" width="200" height="67">
           </a>
           <a href="#" class="footer-link">Contactanos</a>
         </div>
