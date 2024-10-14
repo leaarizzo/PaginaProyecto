@@ -74,21 +74,22 @@
     </nav>
 
     <div class="sidebar">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href=""> Inicio </a>
+        <a href="#news"> Configuracion </a>
 
         <button class="dropdown-sidebar" onclick="dropdownSidebar()"> Dropdown
             <i class="fa fa-caret-down"></i>
         </button>
 
         <div class="dropdown-container">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <a href=""> Alumnos </a>
+            <a href=""> Instructores </a>
+            <a href=""> Administradores </a>
         </div>
 
+        <a href=""> Clases </a>
+        <a href=""> Vehiculos </a>
+        <a href=""> Ayuda </a>
 
     </div>
 
