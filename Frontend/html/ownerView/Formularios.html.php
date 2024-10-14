@@ -17,7 +17,8 @@
 </head>
 
 <body class="body2">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
         <div class="container">
 
             <a href="../../../index.html.php">
@@ -71,14 +72,14 @@
                 </ul>
             </div>
         </div>
-    </nav>
+</nav>
 
     <div class="sidebar">
         <a class="active" href=""> Inicio </a>
         <a href="#news"> Configuracion </a>
 
-        <button class="dropdown-sidebar" onclick="dropdownSidebar()"> Dropdown
-            <i class="fa fa-caret-down"></i>
+        <button class="dropdown-sidebar" onclick="dropdownSidebar()">
+            Usuarios <i class="fa fa-caret-down"></i>
         </button>
 
         <div class="dropdown-container">
@@ -117,28 +118,29 @@
 
     </div>
 
+    <div class="row">
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <ul class="ul1">
-                    <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                    <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                    <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                    <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                </ul>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <ul class="ul1">
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
 
-                <div class="footer-abajo">
-                    <a href="#" class="footer-link">Servicios</a>
-                    <a href="guestLandingSpanish.html" class="footer-logo">
-                        <img src="../../img/logo.png" alt="Logo" width="200" height="67">
-                    </a>
-                    <a href="#" class="footer-link">Contactanos</a>
+                    <div class="footer-abajo">
+                        <a href="#" class="footer-link">Servicios</a>
+                        <a href="guestLandingSpanish.html" class="footer-logo">
+                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
+                        </a>
+                        <a href="#" class="footer-link">Contactanos</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
 </body>
 
