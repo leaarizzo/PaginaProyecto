@@ -571,19 +571,29 @@ footer .social-icons a {
     color: #fff;
     }
   
-  .sidebar a {
+  .sidebar a, .dropdown-sidebar {
+    width: 100%;
+    text-align: left;
     display: block;
+    background-color: #000;
     color: white;
     padding: 16px;
     text-decoration: none;
+    border: none;
   }
-  
+
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+
   .sidebar a.active {
     background-color: #fff;
     color: #000;
   }
   
-  .sidebar a:hover:not(.active) {
+  .sidebar a:hover:not(.active), .dropdown-sidebar:hover {
     background-color: #555;
     color: white;
   }

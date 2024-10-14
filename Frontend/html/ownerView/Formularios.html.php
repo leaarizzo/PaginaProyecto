@@ -78,32 +78,45 @@
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
+
+        <button class="dropdown-sidebar" onclick="dropdownSidebar()"> Dropdown
+            <i class="fa fa-caret-down"></i>
+        </button>
+
+        <div class="dropdown-container">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+
+
     </div>
+
 
     <div class="adminCont">
-  
-    <a href="ownerLandingSpanish.html.php"> Volver </a>
 
-    <h1> FORMULARIOS </h1>
+        <a href="ownerLandingSpanish.html.php"> Volver </a>
 
-    <h2> Usuarios </h2>
-    <a href="formularioAltaUsuarios.html.php"> Alta de Usuario </a> <br>
-    <a href="formularioBajaUsuarios.html.php"> Baja de Usuario </a> <br>
-    <a href="formularioModificarUsuarios.html.php"> Modificación de Usuario </a> <br>
+        <h1> FORMULARIOS </h1>
 
-    <h2> Cursos </h2>
-    <a href="formularioAltaCurso.html.php"> Alta de Curso </a> <br>
-    <a href="formularioBajaCurso.html.php"> Baja de Curso </a> <br>
-    <a href="formularioModificarCurso.html.php"> Modificación de Curso </a> <br>
+        <h2> Usuarios </h2>
+        <a href="formularioAltaUsuarios.html.php"> Alta de Usuario </a> <br>
+        <a href="formularioBajaUsuarios.html.php"> Baja de Usuario </a> <br>
+        <a href="formularioModificarUsuarios.html.php"> Modificación de Usuario </a> <br>
 
-    <h2> Vehículos </h2>
-    <a href="formularioAltaVehiculo.html.php"> Alta de Vehículo </a> <br>
-    <a href="formularioBajaVehiculo.html.php"> Baja de Vehículo </a> <br>
-    <a href="formularioModificarVehiculo.html.php"> Modificación de Vehículo </a> <br>
+        <h2> Cursos </h2>
+        <a href="formularioAltaCurso.html.php"> Alta de Curso </a> <br>
+        <a href="formularioBajaCurso.html.php"> Baja de Curso </a> <br>
+        <a href="formularioModificarCurso.html.php"> Modificación de Curso </a> <br>
+
+        <h2> Vehículos </h2>
+        <a href="formularioAltaVehiculo.html.php"> Alta de Vehículo </a> <br>
+        <a href="formularioBajaVehiculo.html.php"> Baja de Vehículo </a> <br>
+        <a href="formularioModificarVehiculo.html.php"> Modificación de Vehículo </a> <br>
 
     </div>
 
-    
+
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
@@ -127,5 +140,25 @@
     </footer>
 
 </body>
+
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-sidebar");
+    var i;
+
+    function dropdownSidebar() {
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    }
+
+    var dropdown = document.getElementsByClassName("dropdown-sidebar");
+    for (var i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", dropdownSidebar);
+    }
+</script>
+
 
 </html>
