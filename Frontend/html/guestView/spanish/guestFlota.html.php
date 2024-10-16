@@ -16,61 +16,65 @@
 </head> 
 
 <body class="body2">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
-    <div class="container">
-      <a href="../../../../index.html.php">
-        <img src="../../../img/logo.png" alt="Logo" width="200" height="67" > 
-    </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar5"
-        aria-controls="navbar5" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<div style="min-height: 100vh;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+      <div class="container">
+        <a href="../../../../index.html.php">
+          <img src="../../../img/logo.png" alt="Logo" width="200" height="67">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar5"
+          aria-controls="navbar5" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbar5">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a href="guestNosotros.html.php" class="nav-link">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a href="guestFlota.html.php" class="nav-link">Flota</a>
-          </li>
-          <li class="nav-item">
-            <a href="guestClases.html.php" class="nav-link">Clases</a>
-          </li>
-          <li class="nav-item">
-            <a href="guestContacto.html.php" class="nav-link">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a href="guestChoferes.html.php" class="nav-link">Choferes</a> 
-          </li>
-          <li class="nav-item">
-            <a href="guestTests.html.php" class="nav-link">Tests</a>
-          </li>
-          <li class="nav-item">
-            <a href="guestRequisitos.html.php" class="nav-link">Requisitos</a>
-          </li>
-          
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-globe"></i></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="guestLandingSpanish.html.php">Español</a></li>
-              <li><a class="dropdown-item" href="../english/guestLandingEnglish.html.php">Inglés</a></li>
-              <li><a class="dropdown-item" href="../english/guestLandingArabic.html.php">Árabe</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="login.html.php">Log In</a></li>
-              <li><a class="dropdown-item" href="../english/guestLandingEnglish.html.php">Inglés</a></li>
-              <li><a class="dropdown-item" href="../english/guestLandingArabic.html.php">Árabe</a></li>
-            </ul>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbar5">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="guestNosotros.html.php" class="nav-link">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a href="guestFlota.html.php" class="nav-link active">Flota</a>
+            </li>
+            <li class="nav-item">
+              <a href="guestClases.html.php" class="nav-link">Clases</a>
+            </li>
+            <li class="nav-item">
+              <a href="guestContacto.html.php" class="nav-link">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a href="guestChoferes.html.php" class="nav-link">Choferes</a>
+            </li>
+            <li class="nav-item">
+              <a href="guestTests.html.php" class="nav-link">Tests</a>
+            </li>
+            <li class="nav-item">
+              <a href="guestRequisitos.html.php" class="nav-link">Requisitos</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
+                  class="bi bi-globe"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="guestLandingSpanish.html.php">Español</a></li>
+                <li><a class="dropdown-item" href="../english/guestLandingEnglish.html.php">Inglés</a></li>
+                <li><a class="dropdown-item" href="../english/guestLandingArabic.html.php">Árabe</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
+                  class="bi bi-person-circle"></i></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="login.html.php">Log In</a></li>
+                <li><a class="dropdown-item" href="../english/guestLandingEnglish.html.php">Inglés</a></li>
+                <li><a class="dropdown-item" href="../english/guestLandingArabic.html.php">Árabe</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-
+    </nav>
+  
+  </div>
   <div>
     <h1 class="hola">FLOTA</h1>
   </div>

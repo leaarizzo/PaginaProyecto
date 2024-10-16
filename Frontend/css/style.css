@@ -10,6 +10,62 @@
       font-style: normal;
   }  
 
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .navbar-brand img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carousel,
+  .carousel-item,
+  .carousel-item img {
+    height: 100vh;
+  }
+
+  .carousel-caption {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 768px) {
+
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 30vh;
+      left: 50%;
+      transform: translateX(-50%);
+      right: 10%;
+    }
+
+    .luxury-driving {
+      font-size: 3rem;
+    }
+
+    .text-primary2,
+    .text-primary1 {
+      font-size: 4rem;
+    }
+
+  }
+
+  @media (max-width: 576px) {
+
+    .luxury-driving,
+    .text-primary2,
+    .text-primary1 {
+      font-size: 3rem;
+    }
+
+    .carousel-caption {
+      bottom: 40vh;
+    }
+    
+  }
+
 html, .body2 {
     height: 100%;
     margin: 0;
@@ -558,6 +614,7 @@ footer .social-icons a {
 }
 
 
+
 /* Sidebar de Administracion */
 
 .sidebar {
@@ -735,3 +792,4 @@ footer .social-icons a {
 .modal-footer button:hover {
     background-color: #5c5c5c;
 }
+
