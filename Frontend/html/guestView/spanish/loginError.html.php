@@ -81,7 +81,6 @@
 <h1>Iniciar Sesion</h1>
 
 
-
 <div class="input-box">
     <input type="text" name="txtUsername" id="txtUsername" placeholder="Usuario" required>
     <i class='bx bxs-user'></i>
@@ -91,6 +90,9 @@
     <i class='bx bxs-lock-alt'></i>
 </div>
 
+<p class="error"><i class="fas fa-exclamation-triangle"></i> * Usuario o Contraseña Incorrectos, Intente Nuevamente</p>
+
+ 
 <div class="olvide">
 <label> <input type="checkbox" id="recordar">recuerdame</label>
 

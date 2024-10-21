@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $usuario = $controla->comprobarPermiso($username);
 $permiso = $usuario[0]['permisos'];
 
-if ($username = "admin" && $password = "admin") {
+if ($username == "admin" && $password == "admin") {
     $_SESSION['usuario'] = $username;
     $_SESSION['permisos'] = 4;
     if ($recordar) {
@@ -28,6 +28,7 @@ if ($username = "admin" && $password = "admin") {
         setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
     }
     header('Location: ../../Frontend/html/ownerView/spanish/ownerIndex.html.php');
+
 } else if ($controla->logIn($username, $password) == 1) {
     // Autenticación exitosa
     if ($permiso == "owner") {
@@ -41,7 +42,8 @@ if ($username = "admin" && $password = "admin") {
             setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
         }
         header('Location: ../../Frontend/html/ownerView/spanish/ownerIndex.html.php');
-    } elseif ($permiso == "user") {
+
+    } elseif ($permiso == "usuario") {
         $_SESSION['usuario'] = $username;
         $_SESSION['permisos'] = 1;
         if ($recordar) {
@@ -51,8 +53,9 @@ if ($username = "admin" && $password = "admin") {
             setcookie('username', '', time() - 3600, "/"); // Eliminar cookie
             setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
         }
-        header('Location: ../../Frontend/html/guestView/spanish/guestLandingSpanish.html.php');
-    } elseif ($permiso == "instructor") {
+        header('Location: ../../Frontend/html/studView/spanish/studIndex.html.php');
+
+    } elseif ($permiso == "Instructor") {
         $_SESSION['usuario'] = $username;
         $_SESSION['permisos'] = 2;
         if ($recordar) {
@@ -62,7 +65,8 @@ if ($username = "admin" && $password = "admin") {
             setcookie('username', '', time() - 3600, "/"); // Eliminar cookie
             setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
         }
-        header('Location: ../../Frontend/html/guestView/spanish/guestLandingSpanish.html.php');
+        header('Location: ../../Frontend/html/instView/spanish/instIndex.html.php');
+
     } elseif ($permiso == "admin") {
         $_SESSION['usuario'] = $username;
         $_SESSION['permisos'] = 3;
@@ -73,9 +77,8 @@ if ($username = "admin" && $password = "admin") {
             setcookie('username', '', time() - 3600, "/"); // Eliminar cookie
             setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
         }
-        header('Location: ../../Frontend/html/guestView/spanish/guestLandingSpanish.html.php');
+        header('Location: ../../Frontend/html/adminView/spanish/adminIndex.html.php');
     }
 } else {
-    // Autenticación fallida
-    header('Location: ../../Frontend/html/guestView/spanish/guestLandingSpanish.html.php');
+    header('Location: ../../Frontend/html/guestView/spanish/loginError.html.php');
 }

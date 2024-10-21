@@ -98,14 +98,29 @@ html, .body2 {
     background-color: transparent;
 }
 
+@keyframes tintineo {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+  
+  .error {
+    color: red !important;
+    animation: tintineo 1s infinite;
+  }
+
+  .error i {
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+  }
+
 .text-primary1,
 .luxury-driving {
     text-shadow: 
-        -1px -1px 0 #6f7681,  
-         1px -1px 0 #6f7681,
-        -1px  1px 0 #6f7681,
-         1px  1px 0 #6f7681,
-         0 0 10px rgba(0,0,0,0.5);
+        -1px -1px 0 #ffffff,  
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         1px  1px 0 #ffffff,
+         0 0 10px rgba(0, 0, 0, 0.5);
 }
 .text-primary2{
     text-shadow: 
@@ -122,7 +137,7 @@ html, .body2 {
 }
 
 .text-primary2 {
-    color: #6f7681;
+    color: #ffffff;
     font-size: 6rem;
 }
 
@@ -337,7 +352,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #6f7681;
+    color: #ffffff;
 }
 
 footer .social-icons a {

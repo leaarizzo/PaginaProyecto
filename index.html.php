@@ -87,7 +87,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="frontend/img/home-1.jpeg" class="d-block w-100" alt="" />
+          <img src="frontend/img/home-2.jpg" class="d-block w-100" alt="" />
           <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             <div class="text-center mb-3">
               <span class="text-primary2">Academia</span>
