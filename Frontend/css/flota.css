@@ -1,0 +1,70 @@
+.card {
+    transition: transform 0.3s ease-in-out;
+    background-color: #1a1a1a;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-family: 'Liberation Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Media para responsive */
+@media (max-width: 992px) {
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 160px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-img-top {
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+.modal-backdrop {
+    opacity: 0.5;
+}
+
+.bodyFlota {
+    padding-right: 0 !important;
+}
+
+.modal-open {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}

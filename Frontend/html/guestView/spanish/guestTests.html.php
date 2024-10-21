@@ -16,8 +16,8 @@
 </head>
 
 <body class="body2">
-<div style="min-height: 100vh;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+ 
+<nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
       <div class="container">
         <a href="../../../../index.html.php">
           <img src="../../../img/logo.png" alt="Logo" width="200" height="67">
@@ -52,29 +52,26 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
-                  class="bi bi-globe"></i></a>
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-globe"></i>
+              </a>
+              
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="guestLandingSpanish.html.php">Español</a></li>
                 <li><a class="dropdown-item" href="../english/guestLandingEnglish.html.php">Inglés</a></li>
                 <li><a class="dropdown-item" href="../english/guestLandingArabic.html.php">Árabe</a></li>
               </ul>
             </li>
+
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
+              <a href="login.html.php" class="nav-link dropdown-toggle"><i
                   class="bi bi-person-circle"></i></a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="login.html.php">Log In</a></li>
-                <li><a class="dropdown-item" href="../english/guestLandingEnglish.html.php">Inglés</a></li>
-                <li><a class="dropdown-item" href="../english/guestLandingArabic.html.php">Árabe</a></li>
-              </ul>
             </li>
+          
           </ul>
         </div>
       </div>
     </nav>
-  </div>
-
 
     <div>
       <h1 class="hola">TESTS</h1>

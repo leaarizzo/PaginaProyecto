@@ -65,7 +65,7 @@
 <body class="body2">
     
   <div style="min-height: 100vh;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
       <div class="container">
         <a href="../../../../index.html.php">
           <img src="../../../img/logo.png" alt="Logo" width="200" height="67">

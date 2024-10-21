@@ -27,7 +27,7 @@ if ($username = "admin" && $password = "admin") {
         setcookie('username', '', time() - 3600, "/"); // Eliminar cookie
         setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
     }
-    header('Location: ../../Frontend/html/ownerView/ownerLandingSpanish.html.php');
+    header('Location: ../../Frontend/html/ownerView/spanish/ownerIndex.html.php');
 } else if ($controla->logIn($username, $password) == 1) {
     // Autenticación exitosa
     if ($permiso == "owner") {
@@ -40,7 +40,7 @@ if ($username = "admin" && $password = "admin") {
             setcookie('username', '', time() - 3600, "/"); // Eliminar cookie
             setcookie('password', '', time() - 3600, "/"); // Eliminar cookie
         }
-        header('Location: ../../Frontend/html/ownerView/ownerLandingSpanish.html.php');
+        header('Location: ../../Frontend/html/ownerView/spanish/ownerIndex.html.php');
     } elseif ($permiso == "user") {
         $_SESSION['usuario'] = $username;
         $_SESSION['permisos'] = 1;

@@ -605,9 +605,11 @@ class BaseDatos
         return $arreglo;
     }
 
+    // tablas
+
     public function seleccionarAlumnos()
     {
-        $resultadoAlumnos = mysqli_query($this->conexion, "select * from alumno where activo = 1");
+        $resultadoAlumnos = mysqli_query($this->conexion, "select * from TablaAlumnos");
         $arreglo = mysqli_fetch_all($resultadoAlumnos, MYSQLI_ASSOC);
         return $arreglo;
     }
