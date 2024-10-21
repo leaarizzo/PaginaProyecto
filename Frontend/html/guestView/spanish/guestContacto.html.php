@@ -40,10 +40,10 @@
                         <a href="guestClases.html.php" class="nav-link">Clases</a>
                     </li>
                     <li class="nav-item">
-                        <a href="guestContacto.html.php" class="nav-link">Contacto</a>
+                        <a href="guestContacto.html.php" class="nav-link active">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a href="guestChoferes.html.php" class="nav-link active">Choferes</a>
+                        <a href="guestChoferes.html.php" class="nav-link">Choferes</a>
                     </li>
                     <li class="nav-item">
                         <a href="guestTests.html.php" class="nav-link">Tests</a>
