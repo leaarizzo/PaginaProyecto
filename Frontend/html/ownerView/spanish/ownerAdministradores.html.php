@@ -72,8 +72,8 @@
         </div>
     </nav>
 
-    < class="sidebar">
-        <a class="active" href="ownerPerfil.html.php"> Inicio </a>
+    <div class="sidebar">
+        <a href="ownerPerfil.html.php"> Inicio </a>
         <a href="ownerConfiguracion.html.php"> Configuracion </a>
 
         <button class="dropdown-sidebar" onclick="dropdownSidebar()">
@@ -83,39 +83,48 @@
         <div class="dropdown-container">
             <a href="ownerAlumnos.html.php"> Alumnos </a>
             <a href="ownerInstructores.html.php"> Instructores </a>
-            <a href="ownerAdministradores.html.php"> Administradores </a>
+            <a class="active" href="ownerAdministradores.html.php"> Administradores </a>
         </div>
 
         <a href="ownerCursos.html.php"> Clases </a>
         <a href="ownerVehiculos.html.php"> Vehiculos </a>
         <a href="ownerPF.html.php"> Preguntas Frecuentes </a>
 
-        </div>
+    </div>
 
 
-        <div class="row">
+    <div class="adminCont">
 
-            <footer class="site-footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <ul class="ul1">
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
+        <a href="ownerLandingSpanish.html.php"> Volver </a>
 
-                        <div class="footer-abajo">
-                            <a href="#" class="footer-link">Servicios</a>
-                            <a href="guestLandingSpanish.html" class="footer-logo">
-                                <img src="../../img/logo.png" alt="Logo" width="200" height="67">
-                            </a>
-                            <a href="#" class="footer-link">Contactanos</a>
-                        </div>
+        <h1> Owner Administradores </h1>
+
+
+    </div>
+
+    <div class="row">
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <ul class="ul1">
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
+
+                    <div class="footer-abajo">
+                        <a href="#" class="footer-link">Servicios</a>
+                        <a href="guestLandingSpanish.html" class="footer-logo">
+                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
+                        </a>
+                        <a href="#" class="footer-link">Contactanos</a>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </footer>
 
 </body>
 

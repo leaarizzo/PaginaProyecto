@@ -16,6 +16,7 @@ class BaseDatos
         $this->base_datos = "luxurydriving";
         $this->conexion = $this->nueva("localhost", "root", "", "luxurydriving");
     }
+
     /*************************************************************************************************************************************************/
     private function nueva($server, $user, $pass, $base)
     {
@@ -545,10 +546,6 @@ class BaseDatos
                 $arreglo = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
             }
         }
-
-        return $arreglo;
-        echo "hola";
-        print_r($arreglo[0][0]);
         return $arreglo;
     }
 
@@ -610,8 +607,7 @@ class BaseDatos
     public function seleccionarAlumnos()
     {
         $resultadoAlumnos = mysqli_query($this->conexion, "select * from TablaAlumnos");
-        $arreglo = mysqli_fetch_all($resultadoAlumnos, MYSQLI_ASSOC);
-        return $arreglo;
+        return $resultadoAlumnos;
     }
 
     public function seleccionarCategorias()
@@ -623,7 +619,7 @@ class BaseDatos
 
     public function seleccionarInstructores()
     {
-        $resultadoInstructores = mysqli_query($this->conexion, "select * from instructor where activo = 1");
+        $resultadoInstructores = mysqli_query($this->conexion, "select * from in]");
         $arreglo = mysqli_fetch_all($resultadoInstructores, MYSQLI_ASSOC);
         return $arreglo;
     }
