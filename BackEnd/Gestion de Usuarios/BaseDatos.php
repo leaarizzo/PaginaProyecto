@@ -604,8 +604,7 @@ class BaseDatos
 
     // tablas
 
-    public function seleccionarAlumnos()
-    {
+    public function seleccionarAlumnos(){
         $resultadoAlumnos = mysqli_query($this->conexion, "select * from TablaAlumnos");
         return $resultadoAlumnos;
     }
