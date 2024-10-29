@@ -72,7 +72,7 @@
         </div>
     </nav>
 
-    < class="sidebar">
+    <div class="sidebar">
         <a class="active" href="ownerPerfil.html.php"> Inicio </a>
         <a href="ownerConfiguracion.html.php"> Configuracion </a>
 
@@ -90,32 +90,35 @@
         <a href="ownerVehiculos.html.php"> Vehiculos </a>
         <a href="ownerPF.html.php"> Preguntas Frecuentes </a>
 
-        </div>
+    </div>
 
 
-        <div class="row">
+    <div class="adminCont">
+    </div>
 
-            <footer class="site-footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <ul class="ul1">
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                            <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
+    <div class="row">
 
-                        <div class="footer-abajo">
-                            <a href="#" class="footer-link">Servicios</a>
-                            <a href="guestLandingSpanish.html" class="footer-logo">
-                                <img src="../../img/logo.png" alt="Logo" width="200" height="67">
-                            </a>
-                            <a href="#" class="footer-link">Contactanos</a>
-                        </div>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <ul class="ul1">
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
+
+                    <div class="footer-abajo">
+                        <a href="#" class="footer-link">Servicios</a>
+                        <a href="guestLandingSpanish.html" class="footer-logo">
+                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
+                        </a>
+                        <a href="#" class="footer-link">Contactanos</a>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </footer>
 
 </body>
 
@@ -141,6 +144,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-<script src="../../js/script.js"></script>
 
 </html>
