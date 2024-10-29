@@ -602,12 +602,6 @@ class BaseDatos
         return $arreglo;
     }
 
-    // tablas
-
-    public function seleccionarAlumnos(){
-        $resultadoAlumnos = mysqli_query($this->conexion, "select * from TablaAlumnos");
-        return $resultadoAlumnos;
-    }
 
     public function seleccionarCategorias()
     {

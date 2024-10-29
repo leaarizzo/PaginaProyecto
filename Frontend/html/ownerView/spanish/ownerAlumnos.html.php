@@ -94,9 +94,79 @@
     
     <div class="adminCont">
 
-        <a href="ownerLandingSpanish.html.php"> Volver </a>
-
         <h1> Owner Alumnos </h1>
+
+        
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title text-uppercase mb-0">Usuarios</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tablaPersonas" class="table no-wrap user-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Documento</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Username</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Apellido</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Fecha Nacimiento</th>                                            
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Telefono</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Correo</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Fecha Inscripcion</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Estado Teorico</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL DE MODIFCACIONES -->
+            <div id="modifModal" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modificar usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="txtID">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Nombre</span>
+                                </div>
+                                <input type="text" id="txtNombre" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Correo</span>
+                                </div>
+                                <input type="text" id="txtCorreo" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+                            <div id="btnGuardarCont"></div>
+                            <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+        
+    
     </div>
 
     <div class="row">
@@ -115,7 +185,7 @@
                     <div class="footer-abajo">
                         <a href="#" class="footer-link">Servicios</a>
                         <a href="guestLandingSpanish.html" class="footer-logo">
-                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
+                            <img src="../../../img/logo.png" alt="Logo" width="200" height="67">
                         </a>
                         <a href="#" class="footer-link">Contactanos</a>
                     </div>
@@ -138,11 +208,16 @@
         }
     }
 
+    
+
     var dropdown = document.getElementsByClassName("dropdown-sidebar");
     for (var i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", dropdownSidebar);
     }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script type="text/javascript" src="../../../js/manejoAlumnos.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

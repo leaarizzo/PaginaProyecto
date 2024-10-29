@@ -180,14 +180,6 @@ class Controlador{
 
     /* Traer Tabla Usuarios*/
 
-    public function traerTablaAlumnos()
-    {
-        echo ('<pre>');
-        echo ('Alumnos');
-        print_r($this->base->seleccionarAlumnos());
-        echo ('</pre>');
-    }
-
     public function traerTablaInstructores()
     {
         echo ('<pre>');
