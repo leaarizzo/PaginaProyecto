@@ -556,6 +556,9 @@ class BaseDatos
 
     /********************************************************************************/
 
+
+    //Seleccionar Especifico
+
     public function seleccionarAdmin($username)
     {
         $resultadoAlumno = mysqli_query($this->conexion, "select * from administrador where username = '$username' and activo = 1");
@@ -571,16 +574,19 @@ class BaseDatos
         return $arreglo;
     }
 
-    public function seleccionarAlumnos()
+    public function seleccionarInstructor($username)
     {
-        $resultadoAlumno = mysqli_query($this->conexion, "SELECT * FROM TablaAlumnos");
+        $resultadoAlumno = mysqli_query($this->conexion, "select * from instructor where username = '$username' and activo = 1");
         $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
         return $arreglo;
     }
 
-    public function seleccionarInstructor($username)
+
+    // Seleccionar Tabla completa
+
+    public function seleccionarAlumnos()
     {
-        $resultadoAlumno = mysqli_query($this->conexion, "select * from instructor where username = '$username' and activo = 1");
+        $resultadoAlumno = mysqli_query($this->conexion, "SELECT * FROM TablaAlumnos");
         $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
         return $arreglo;
     }
@@ -595,7 +601,7 @@ class BaseDatos
 
     public function seleccionarInstructores()
     {
-        $resultadoInstructores = mysqli_query($this->conexion, "select * from in]");
+        $resultadoInstructores = mysqli_query($this->conexion, "select * from tablaInstructores]");
         $arreglo = mysqli_fetch_all($resultadoInstructores, MYSQLI_ASSOC);
         return $arreglo;
     }
@@ -616,21 +622,21 @@ class BaseDatos
 
     public function seleccionarAdministradores()
     {
-        $resultadoAdministrador = mysqli_query($this->conexion, "select * from administrador where activo = 1");
+        $resultadoAdministrador = mysqli_query($this->conexion, "select * from TablaAdmin");
         $arreglo = mysqli_fetch_all($resultadoAdministrador, MYSQLI_ASSOC);
         return $arreglo;
     }
 
     public function seleccionarVehiculos()
     {
-        $resultadoVehiculos = mysqli_query($this->conexion, "select * from vehiculo where activo = 1");
+        $resultadoVehiculos = mysqli_query($this->conexion, "select * from TablaVehiculos");
         $arreglo = mysqli_fetch_all($resultadoVehiculos, MYSQLI_ASSOC);
         return $arreglo;
     }
 
     public function seleccionarCursos()
     {
-        $resultadocursos = mysqli_query($this->conexion, "select * from curso where activo = 1");
+        $resultadocursos = mysqli_query($this->conexion, "select * from TablaClases");
         $arreglo = mysqli_fetch_all($resultadocursos, MYSQLI_ASSOC);
         return $arreglo;
     }

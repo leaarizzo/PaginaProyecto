@@ -27,9 +27,6 @@ class Controlador{
     public function altaAlumno(string $documento, string $nombre, string $apellido, string $fecha_nac, string $telefono, string $correo, string $username, string $password, array $categoriaLibreta, string $estadoTeorico, string $permisos, string $fechaIns)
     {
         $alumno = new Alumno($estadoTeorico, $documento, $nombre, $apellido, $fecha_nac, $telefono, $correo, $username, $password, $permisos, $fechaIns);
-        echo ('<pre>');
-        echo ($alumno);
-        echo ('</pre>');
         $this->base->ingresarAlumno($alumno);
         $alumno->setCategoriaLibreta($categoriaLibreta);
         $this->base->ingresarCategoriaAlumnos($alumno);
@@ -81,30 +78,30 @@ class Controlador{
         $this->base->eliminarAlumno($documento);
     }
 
-    public function bajaInstructor(String $documento, String $opcion)
+    public function bajaInstructor(String $documento)
     {
         $this->base->eliminarCategoriaInstructor($documento);
         $this->base->eliminarHorariosInstructor($documento);
-        $this->base->eliminarInstructor($documento, $opcion);
+        $this->base->eliminarInstructor($documento);
     }
 
-    public function bajaAdministrador(String $documento, String $opcion)
+    public function bajaAdministrador(String $documento)
     {
-        $this->base->eliminarAdministrador($documento, $opcion);
+        $this->base->eliminarAdministrador($documento);
     }
 
     /* Baja Vehiculo */
 
-    public function bajaVehiculo(String $matricula, String $opcion)
+    public function bajaVehiculo(String $matricula)
     {
-        $this->base->eliminarVehiculo($matricula, $opcion);
+        $this->base->eliminarVehiculo($matricula);
     }
 
     /* Baja Cursos */
 
-    public function bajaCurso(String $codigoClase, String $opcion)
+    public function bajaCurso(String $codigoClase)
     {
-        $this->base->eliminarCurso($codigoClase, $opcion);
+        $this->base->eliminarCurso($codigoClase);
         
     }
 
@@ -187,61 +184,40 @@ class Controlador{
 
     public function traerTablaInstructores()
     {
-        echo ('<pre>');
-        echo ('Instructores');
-        print_r($this->base->seleccionarInstructores());
-        echo ('</pre>');
+        return $this->base->seleccionarInstructores();
     }
 
     public function traerTablaAdministradores()
     {
-        echo ('<pre>');
-        echo ('Administradores');
-        print_r($this->base->seleccionarAdministradores());
-        echo ('</pre>');
+        return $this->base->seleccionarAdministradores();
     }
 
     public function traerTablaCategorias()
     {
-        echo ('<pre>');
-        echo ('Categoria - Alumno');
-        print_r($this->base->seleccionarCategorias());
-        echo ('</pre>');
+        return $this->base->seleccionarCategorias();
     }
 
     public function traerTablaCategoriaClase()
     {
-        echo ('<pre>');
-        echo ('Categoria - Instructor');
-        print_r($this->base->seleccionarCategoriaCurso());
-        echo ('</pre>');
+        return $this->base->seleccionarCategoriacurso();
     }
 
     public function traerTablaHorarios()
     {
-        echo ('<pre>');
-        echo ('Horarios - Instructor');
-        print_r($this->base->seleccionarHorarios());
-        echo ('</pre>');
+        return $this->base->seleccionarHorarios();
     }
 
     /* Traer Tabla Vehiculos */
 
     public function traerTablaVehiculos()
     {
-        echo ('<pre>');
-        echo ('Vehiculos');
-        print_r($this->base->seleccionarVehiculos());
-        echo ('</pre>');
+        return $this->base->seleccionarVehiculos();
     }
 
     /* Traer Tabla Cursos */
 
     public function traerTablaClases()
     {
-        echo ('<pre>');
-        echo ('Clases');
-        print_r($this->base->seleccionarCursos());
-        echo ('</pre>');
+        return $this->base->seleccionarCursos();
     }
 }
