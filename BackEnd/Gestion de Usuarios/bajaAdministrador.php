@@ -4,8 +4,8 @@ require_once 'Controlador.php';
 
 $controla = new Controlador();
 
-$matricula = $_POST['dato'];
+$cedula = $_POST['dato'];  
 
-$controla->BajaVehiculo($matricula);
+$controla->bajaAdministrador($cedula);
 
 ?>

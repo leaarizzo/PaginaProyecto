@@ -1,12 +1,11 @@
 <?php
+
 require_once 'Controlador.php';
-require_once 'Curso.php';
+
 $controla = new Controlador();
 
-$opcion = $_POST['txtOpcion'];
-$codigoClase = $_POST['txtCodigo'];
+$id = $_POST['dato'];  
 
-$controla->bajaCurso($codigoClase, $opcion);
+$controla->bajaCurso($id);
 
-
-header('Location: vista.html.php');
+?>

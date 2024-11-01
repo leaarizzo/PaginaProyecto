@@ -1,18 +1,15 @@
 <?php
 require_once 'Controlador.php';
-require_once 'Curso.php';
 $controla = new Controlador();
 
-$documentoAlumno = $_POST['txtDocumentoAlumno'];
-$documentoInstructor = $_POST['txtDocumentoInstructor'];
-$matricula = $_POST['txtMatricula'];
-$precio = $_POST['txtPrecio'];
-$hora = $_POST['txtHora'];
-$fecha = $_POST['txtFecha'];
-$tipoLibreta = $_POST['txtTipoLibreta'];
-$resultado = $_POST['txtResultado'];
-$tipo = $_POST['txtOpcion'];
+$documentoAlumno = $_POST['documentoAlumno'];
+$documentoInstructor = $_POST['documentoInstructor'];
+$matricula = $_POST['matricula'];
+$precio = $_POST['precio'];
+$hora = $_POST['hora'];
+$fecha = $_POST['fecha'];
+$tipoLibreta = $_POST['tipoLibreta'];
+$resultado = $_POST['resultado'];
+$tipo = $_POST['opcion'];
 
 $controla->altaCurso($documentoAlumno, $documentoInstructor, $matricula, $precio, $hora, $fecha, $tipoLibreta, $resultado, $tipo);
-
-header('Location: vista.html.php');
