@@ -6,7 +6,6 @@ require_once 'Administrador.php';
 $controla = new Controlador();
 
 $tipo = $_POST['txtOpcion'];
-
 $documento = $_POST['txtDocumento'];
 
 $dato = $_POST['txtDato'];
@@ -70,5 +69,6 @@ if ($tipo == "alumno") {
     $controla->modificarAdministrador($documento, $dato, $nuevo);
 }
 
-
-header('Location: vista.html.php');
+if ($a == "owner") {
+    header("Location: ../../Frontend/html/ownerView/spanish/ownerAlumnos.html.php");
+}

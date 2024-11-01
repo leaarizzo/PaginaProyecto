@@ -91,19 +91,114 @@
         <a href="ownerPF.html.php"> Preguntas Frecuentes </a>
 
     </div>
-    
+
     <div class="adminCont">
 
-        <h1> Owner Alumnos </h1>
-
-        
         <body>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title text-uppercase mb-0">Usuarios</h2>
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h2 class="card-title text-uppercase mb-0">ALUMNOS</h2>
+                                    <button type="button" class="btn btn-primary" onclick="mostrarModalAgregar()">
+                                        <i class="fas fa-plus"></i> Añadir Alumno
+                                    </button>
+                                </div>
+
+                                <!-- MODAL DE AÑADIR USUARIO -->
+                                <div id="addModal" class="modal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Añadir nuevo alumno</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModalAgregar()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Documento</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoDocumento" class="form-control" placeholder="Número de documento">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Username</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoUsername" class="form-control" placeholder="Username">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Nombre</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoNombre" class="form-control" placeholder="Nombre">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Apellido</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoApellido" class="form-control" placeholder="Apellido">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Fecha Nacimiento</span>
+                                                    </div>
+                                                    <input type="date" id="txtNuevaFechaNacimiento" class="form-control">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Teléfono</span>
+                                                    </div>
+                                                    <input type="tel" id="txtNuevoTelefono" class="form-control" placeholder="Teléfono">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Correo</span>
+                                                    </div>
+                                                    <input type="email" id="txtNuevoCorreo" class="form-control" placeholder="Correo electrónico">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Contraseña</span>
+                                                    </div>
+                                                    <input type="password" id="txtNuevaPassword" class="form-control" placeholder="Contraseña">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Categoría Libreta</span>
+                                                    </div>
+                                                    <div>
+                                                        <label for="txtNuevoA"> Categoría Libreta A </label>
+                                                        <input type="checkbox" name="txtNuevoA" id="txtNuevoA">
+                                                        <br>
+                                                        <label for="txtNuevoB"> Categoría Libreta B </label>
+                                                        <input type="checkbox" name="txtNuevoB" id="txtNuevoB">
+                                                        <br>
+                                                        <label for="txtNuevoC"> Categoría Libreta C </label>
+                                                        <input type="checkbox" name="txtNuevoC" id="txtNuevoC">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModalAgregar()">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" onclick="agregarAlumno()">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="table-responsive">
                                 <table id="tablaPersonas" class="table no-wrap user-table mb-0">
@@ -113,7 +208,7 @@
                                             <th scope="col" class="border-0 text-uppercase font-medium">Username</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Apellido</th>
-                                            <th scope="col" class="border-0 text-uppercase font-medium">Fecha Nacimiento</th>                                            
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Fecha Nacimiento</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Telefono</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Correo</th>
                                             <th scope="col" class="border-0 text-uppercase font-medium">Fecha Inscripcion</th>
@@ -137,21 +232,56 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
                         <div class="modal-body">
                             <input type="hidden" id="txtID">
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Nombre</span>
+                                    <span class="input-group-text" id="basic-addon1">Dato a Modificar</span>
                                 </div>
-                                <input type="text" id="txtNombre" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                <div class="form-group">
+                                    <select id="txtDato" name="txtDato" class="form-control" placeholder="Dato a Editar">
+                                        <option value="nombre"> Nombre </option>
+                                        <option value="apellido"> Apellido </option>
+                                        <option value="fechaNacimiento"> Fecha Nacimiento </option>
+                                        <option value="telefono"> Telefono </option>
+                                        <option value="correo"> Correo Electronico </option>
+                                        <option value="username"> Username </option>
+                                        <option value="passwrd"> Password </option>
+                                        <option value="permisos"> Permisos </option>
+                                        <option value="fechaInscripcion"> Fecha Inscripcion </option>
+                                        <option value="horarios"> Horarios </option>
+                                        <option value="estadoTeorico"> Estado Teorico </option>
+                                        <option value="categoriaLibreta"> Categoria Libreta </option>
+                                        <option value="categoriaClase"> Categoria Clase </option>
+                                    </select>
+                                </div>
+
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Correo</span>
+                                    <span class="input-group-text" id="basic-addon1">Nuevo Dato</span>
                                 </div>
-                                <input type="text" id="txtCorreo" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="txtNuevo" class="form-control" placeholder="nuevo dato" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Categoria Libreta</span>
+                                </div>
+                                <!-- Categoria Libreta -->
+                                <div class>
+                                    <label for="txtA"> Categoria Libreta A </label>
+                                    <input type="checkbox" name="txtA" id="txtA">
+                                    <br>
+                                    <label for="txtB"> Categoria Libreta B </label>
+                                    <input type="checkbox" name="txtB" id="txtB">
+                                    <br>
+                                    <label for="txtC"> Categoria Libreta C </label>
+                                    <input type="checkbox" name="txtC" id="txtC">
+                                </div>
                             </div>
 
                         </div>
@@ -165,13 +295,13 @@
             </div>
 
     </div>
-        
-    
+
+
     </div>
 
     <div class="row">
 
-        <footer class="site-footer">
+        < class="site-footer">
             <div class="container">
                 <div class="footer-content">
                     <ul class="ul1">
@@ -191,7 +321,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+            </footer>
 
 </body>
 
@@ -208,7 +338,7 @@
         }
     }
 
-    
+
 
     var dropdown = document.getElementsByClassName("dropdown-sidebar");
     for (var i = 0; i < dropdown.length; i++) {
@@ -216,7 +346,7 @@
     }
 </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../../../js/manejoAlumnos.js"></script>
 
 

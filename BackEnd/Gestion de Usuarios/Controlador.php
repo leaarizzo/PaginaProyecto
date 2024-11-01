@@ -75,10 +75,10 @@ class Controlador{
 
     /* Baja Usuarios */
 
-    public function bajaAlumno(String $documento, String $opcion)
+    public function bajaAlumno(String $documento)
     {
         $this->base->eliminarCategoriaAlumno($documento);
-        $this->base->eliminarAlumno($documento, $opcion);
+        $this->base->eliminarAlumno($documento);
     }
 
     public function bajaInstructor(String $documento, String $opcion)
@@ -179,6 +179,11 @@ class Controlador{
     /********************************/
 
     /* Traer Tabla Usuarios*/
+
+    public function traerTablaAlumnos()
+    {
+        return $this->base->seleccionarAlumnos();
+    }
 
     public function traerTablaInstructores()
     {

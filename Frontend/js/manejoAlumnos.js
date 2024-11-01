@@ -10,13 +10,6 @@ async function traerUsuarios() {
 	return res;
 }
 
-/**	
- * Llama a la función de traer datos de forma asincrona
- * 
- * Esta funcióm nos permite llamar a traer datos, y cuando
- * los datos llegan, operamos con los mismos
- * 
- */
 traerUsuarios().then(dato => {
 	for (var i = 0; i < dato.length; i++) {
 		filaNueva(dato[i], i);
@@ -26,36 +19,6 @@ traerUsuarios().then(dato => {
 
 });
 
-/**
-* Agrega fila al listado
-* 
-* Recibe los datos de la persona e  fotrmato array y arma una nueva fila para la tabla
-* preexistente en HTML. La tabla en el HTML debe tener el id "tablaPersonas"
-*
-* 
-* @param array infoPersona
-* @param integer pos Posicion en el array 
-*/
-
-traerUsuarios().then(dato => {
-	for (var i = 0; i < dato.length; i++) {
-		filaNueva(dato[i], i);
-	}
-
-	datosUsuarios = dato;
-
-});
-
-/**
-* Agrega fila al listado
-* 
-* Recibe los datos de la persona e  fotrmato array y arma una nueva fila para la tabla
-* preexistente en HTML. La tabla en el HTML debe tener el id "tablaPersonas"
-*
-* 
-* @param array infoPersona
-* @param integer pos Posicion en el array 
-*/
 function filaNueva(infoPersona, pos) {
     var fila = "<tr id=" + pos + ">"
         + "<td id='txtDocumento" + pos + "' class='pl-4'>" + infoPersona.documentoAlumno + "</td>"
@@ -64,9 +27,9 @@ function filaNueva(infoPersona, pos) {
         + "<td id='txtApellido" + pos + "'>" + infoPersona.apellido + "</td>"
         + "<td id='txtFechaNacimiento" + pos + "'>" + infoPersona.fechaNacimiento + "</td>"
         + "<td id='txtTelefono" + pos + "'>" + infoPersona.telefono + "</td>"
-        + "<td id='txtEmail" + pos + "'>" + infoPersona.correo + "</td>"  // Cambiado a `correo`
+        + "<td id='txtEmail" + pos + "'>" + infoPersona.correo + "</td>"  
         + "<td id='txtFechaInscipción" + pos + "'>" + infoPersona.fechaInscripcion + "</td>"
-        + "<td id='txtEstado" + pos + "'>" + infoPersona.estadoTeorico + "</td>" // Cambiado a `estadoTeorico`
+        + "<td id='txtEstado" + pos + "'>" + infoPersona.estadoTeorico + "</td>"
         + "<td>"
         + "<button type='button' id=" + pos + " onclick='eliminar(this.id)' class='btn btn-outline-info btn-circle btn-lg btn-circle ml-2'><i class='fa fa-trash'></i> </button>"
         + "<button type='button' onclick='mostrarModal(" + pos + ")' class='btn btn-outline-info btn-circle btn-lg btn-circle ml-2'><i class='fa fa-edit'></i> </button>"
@@ -75,20 +38,50 @@ function filaNueva(infoPersona, pos) {
 }
 
 
-/**
-* Eliminacion de un usuario
-*
-* Elimina tanto graficamante como en la base de datos.
-* La posicion determina el id de la fila
-*
-* @param integer pos Posicion en el array e id de fila
-*/
-function eliminar(pos) {
+function agregarAlumno() {
 	$.ajax({
-		url: 'php/eliminar.php',
+		url: '../../../../BackEnd/Gestion de Usuarios/altaAlumnos.php',
 		method: 'POST',
 		data: {
-			dato: datosUsuarios[pos].id
+			documento: $('#txtNuevoDocumento').val(),
+			username: $('#txtNuevoUsername').val(),
+			nombre: $('#txtNuevoNombre').val(),
+			apellido: $('#txtNuevoApellido').val(),
+			fechaNacimiento: $('#txtNuevaFechaNacimiento').val(),
+			telefono: $('#txtNuevoTelefono').val(),
+			correo: $('#txtNuevoCorreo').val(),
+			password: $('#txtNuevaPassword').val(),
+			catA: $('#txtNuevoA').val(),
+			catB: $('#txtNuevoB').val(),
+			catC: $('#txtNuevoC').val()
+		},
+		success: function (respuesta) {
+			console.log(respuesta);
+			// Update the datosUsuarios array and add a new row to the table
+			traerUsuarios().then(dato => {
+				// Clear the table first
+				$("#tablaPersonas").find("tr:gt(0)").remove();
+				datosUsuarios = dato;
+				for (var i = 0; i < dato.length; i++) {
+					filaNueva(dato[i], i);
+				}
+			});
+			cerrarModalAgregar();
+		},
+		error: function (respuesta) {
+			console.log(respuesta);
+			
+		},
+	});
+}
+// Eliminacion de un usuario
+
+function eliminar(pos) {
+	$.ajax({
+		url: '../../../../BackEnd/Gestion de Usuarios/bajaAlumnos.php',
+		method: 'POST',
+		data: {
+			dato: datosUsuarios[pos].documentoAlumno
 		},
 		success: function (respuesta) {
 			console.log(respuesta);
@@ -101,22 +94,17 @@ function eliminar(pos) {
 }
 
 
-/**
- * Guardar modificaciones en usuario
- * 
- * Realiza las modificaciones del usuarios tanto graficamente como
- * en presistencia.
- * 
- * @param integer pos Posicion en el array e id de fila
- */
 function guardarCambios(pos) {
 	$.ajax({
-		url: 'php/modificar.php',
+		url: '../../../../BackEnd/Gestion de Usuarios/modificarAlumnos.php',
 		method: 'POST',
 		data: {
-			nombre: $('#txtNombre').val(),
-			email: $('#txtCorreo').val(),
-			id: datosUsuarios[pos].id
+			cedula: datosUsuarios[pos].documentoAlumno,
+			dato: $('#txtDato').val(),
+			nuevo: $('#txtNuevo').val(),
+			catA: $('#txtA').val(),
+			catB: $('#txtB').val(),
+			catC: $('#txtC').val()
 		},
 		success: function (respuesta) {
 			console.log(respuesta);
@@ -126,19 +114,40 @@ function guardarCambios(pos) {
 		},
 	});
 
-	$("#txtNombre" + pos).html($('#txtNombre').val());
-	$("#txtEmail" + pos).html($('#txtCorreo').val());
+	$casos = $('#txtDato').val();
+	
+	if ($casos == "nombre") {
+		$("#txtNombre" + pos).html($('#txtNuevo').val());
+	}
+	if ($casos == "apellido") {
+		$("#txtApellido" + pos).html($('#txtNuevo').val());
+	} 
+	if ($casos == "fechaNacimiento") {
+		$("#txtFechaNacimiento" + pos).html($('#txtNuevo').val());
+	} 
+	if ($casos == "telefono") {
+		$("#txtTelefono" + pos).html($('#txtNuevo').val());
+	} 
+	if ($casos == "email") {
+		$("#txtEmail" + pos).html($('#txtNuevo').val());
+	} 
+	if ($casos == "estado") {
+		$("#txtEstado" + pos).html($('#txtNuevo').val());
+	} 
+	if ($casos == "fechaInscripcion") {
+		$("#txtFechaInscipción" + pos).html($('#txtNuevo').val());
+	} 
+	if ($casos == "username") {
+		$("#txtUsername" + pos).html($('#txtNuevo').val());
+	}
+	
 	cerrarModal();
 }
-
-
 
 /*##############   MODAL  ############## */
 
 function mostrarModal(pos) {
 	$('#modifModal').css("display", "block");
-	$('#txtNombre').val(datosUsuarios[pos].nombre);
-	$('#txtCorreo').val(datosUsuarios[pos].email);
 	$('#btnGuardar').click(function () { guardarCambios(pos); });
 }
 
@@ -155,4 +164,46 @@ window.onclick = function (event) {
 		modal.style.display = "none";
 	}
 }
+function mostrarModalAgregar() {
+    $('#addModal').css("display", "block");
+}
 
+function cerrarModalAgregar() {
+    $('#addModal').css("display", "none");
+}
+
+function agregarAlumno() {
+    $.ajax({
+        url: '../../../../BackEnd/Gestion de Usuarios/altaAlumnos.php',
+        method: 'POST',
+        data: {
+            documento: $('#txtNuevoDocumento').val(),
+            username: $('#txtNuevoUsername').val(),
+            nombre: $('#txtNuevoNombre').val(),
+            apellido: $('#txtNuevoApellido').val(),
+            fechaNacimiento: $('#txtNuevaFechaNacimiento').val(),
+            telefono: $('#txtNuevoTelefono').val(),
+            correo: $('#txtNuevoCorreo').val(),
+            password: $('#txtNuevaPassword').val(),
+            catA: $('#txtNuevoA').is(':checked') ? 1 : 0,
+            catB: $('#txtNuevoB').is(':checked') ? 1 : 0,
+            catC: $('#txtNuevoC').is(':checked') ? 1 : 0
+        },
+        success: function (respuesta) {
+            console.log(respuesta);
+            // Update the datosUsuarios array and add a new row to the table
+            traerUsuarios().then(dato => {
+                // Clear the table first
+                $("#tablaPersonas").find("tr:gt(0)").remove();
+                datosUsuarios = dato;
+                for (var i = 0; i < dato.length; i++) {
+                    filaNueva(dato[i], i);
+                }
+            });
+            cerrarModalAgregar();
+        },
+        error: function (respuesta) {
+            console.log(respuesta);
+        },
+    });
+}

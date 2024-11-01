@@ -143,57 +143,46 @@ class BaseDatos
 
     // Altas de Cursos en Tablas   
 
-    public function ingresarCurso($curso){
-    $codigoAlumno = $curso->getDocumentoAlumno();
-    $codigoInstructor = $curso->getDocumentoInstructor();
-    $matricula = $curso->getMatricula();
-    $precio = $curso->getPrecio();
-    $hora = $curso->getHora();
-    $fecha = $curso->getFecha();
-    $tipoLibreta = $curso->getTipoLibreta();
-    $resultado = $curso->getResultado();
-    $tipo = $curso->getTipo();
+    public function ingresarCurso($curso)
+    {
+        $codigoAlumno = $curso->getDocumentoAlumno();
+        $codigoInstructor = $curso->getDocumentoInstructor();
+        $matricula = $curso->getMatricula();
+        $precio = $curso->getPrecio();
+        $hora = $curso->getHora();
+        $fecha = $curso->getFecha();
+        $tipoLibreta = $curso->getTipoLibreta();
+        $resultado = $curso->getResultado();
+        $tipo = $curso->getTipo();
 
-    $insertar = "insert into curso values('','$codigoAlumno','$codigoInstructor','$matricula','$precio','$hora','$fecha','$tipoLibreta','$resultado','$tipo', 1)";
-    return mysqli_query($this->conexion, $insertar);
+        $insertar = "insert into curso values('','$codigoAlumno','$codigoInstructor','$matricula','$precio','$hora','$fecha','$tipoLibreta','$resultado','$tipo', 1)";
+        return mysqli_query($this->conexion, $insertar);
     }
-    
+
     /**************************************/
     /*               BAJAS                */
     /**************************************/
 
     // Bajas de Usuarios en Tablas
 
-    public function eliminarAlumno($documento, $opcion)
+    public function eliminarAlumno($documento)
     {
-        if ($opcion == "baja") {
-            $eliminar = "update alumno set activo = 0 where documentoAlumno = '$documento'";
-            return mysqli_query($this->conexion, $eliminar);
-        } else if ($opcion == "reactivar") {
-            $eliminar = "update alumno set activo = 1 where documentoAlumno = '$documento'";
-            return mysqli_query($this->conexion, $eliminar);
-        }
+        $eliminar = "update alumno set activo = 0 where documentoAlumno = '$documento'";
+        return mysqli_query($this->conexion, $eliminar);
     }
 
-    public function eliminarInstructor($documento, $opcion)
+
+    public function eliminarInstructor($documento)
     {
-        if ($opcion == "baja") {
-            $eliminar = "update instructor set activo = 0 where documentoInstructor = '$documento'";
-            return mysqli_query($this->conexion, $eliminar);
-        } else if ($opcion == "reactivar") {
-            $eliminar = "update instructor set activo = 1 where documentoInstructor = '$documento'";
-            return mysqli_query($this->conexion, $eliminar);
-        }
+        $eliminar = "update instructor set activo = 0 where documentoInstructor = '$documento'";
+        return mysqli_query($this->conexion, $eliminar);
     }
 
-    public function eliminarAdministrador($documento, $opcion){
-        if ($opcion == "baja"){
-            $eliminar = "update administrador set activo = 0 where documentoAdmin = '$documento'";
-            return mysqli_query($this->conexion, $eliminar);
-        } else if ($opcion == "reactivar"){
-            $eliminar = "update administrador set activo = 1 where documentoAdmin = '$documento'";
-            return mysqli_query($this->conexion, $eliminar);
-        }    
+
+    public function eliminarAdministrador($documento): bool|mysqli_result
+    {
+        $eliminar = "update administrador set activo = 0 where documentoAdmin = '$documento'";
+        return mysqli_query($this->conexion, $eliminar);
     }
 
     public function eliminarCategoriaAlumno($documento)
@@ -215,28 +204,18 @@ class BaseDatos
     }
 
     // Bajas de Vehiculos en Tablas
-    public function eliminarVehiculo($matricula, $opcion)
+    public function eliminarVehiculo($matricula)
     {
-        if ($opcion == "baja") {
-            $eliminar = "update vehiculo set activo = 0 where matricula = '$matricula'";
-            return mysqli_query($this->conexion, $eliminar);
-        } else if ($opcion == "reactivar") {
-            $eliminar = "update vehiculo set activo = 1 where matricula = '$matricula'";
-            return mysqli_query($this->conexion, $eliminar);
-        }
+        $eliminar = "update vehiculo set activo = 0 where matricula = '$matricula'";
+        return mysqli_query($this->conexion, $eliminar);
     }
 
     // Bajas de Cursos en Tablas
 
-    public function eliminarCurso($codigocurso, $opcion)
+    public function eliminarCurso($codigocurso)
     {
-        if ($opcion == "baja"){
-            $eliminar = "update curso set activo = 0 where codigo = '$codigocurso'";
-            return mysqli_query($this->conexion, $eliminar);
-        } else if ($opcion == "reactivar"){
-            $eliminar = "update curso set activo = 1 where codigo = '$codigocurso'";
-            return mysqli_query($this->conexion, $eliminar);
-        }
+        $eliminar = "update curso set activo = 0 where codigo = '$codigocurso'";
+        return mysqli_query($this->conexion, $eliminar);
     }
 
     /**************************************/
@@ -302,7 +281,6 @@ class BaseDatos
                 for ($i = 0; $i < count($nuevo); $i++) {
                     $modificar = "insert into alumno_libreta values('$documento','$nuevo[$i]')";
                     mysqli_query($this->conexion, $modificar);
-                    
                 }
                 break;
         }
@@ -497,7 +475,6 @@ class BaseDatos
                 $modificar = "update curso set tipo = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
-            
         }
     }
 
@@ -594,6 +571,12 @@ class BaseDatos
         return $arreglo;
     }
 
+    public function seleccionarAlumnos()
+    {
+        $resultadoAlumno = mysqli_query($this->conexion, "SELECT * FROM TablaAlumnos");
+        $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
+        return $arreglo;
+    }
 
     public function seleccionarInstructor($username)
     {
