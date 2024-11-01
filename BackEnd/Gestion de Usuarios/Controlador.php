@@ -38,7 +38,7 @@ class Controlador{
         $this->base->ingresarInstructor($instructor);
         $instructor->setCategoriaClase($categoriaClase);
         $this->base->ingresarCategoriaInstructores($instructor);
-        $instructor->setHorarios($horarios);
+        $instructor->setHorarios($horarios)=
         $this->base->ingresarHorariosInstructores($instructor);
     }
 

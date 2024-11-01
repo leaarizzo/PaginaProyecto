@@ -57,7 +57,7 @@ function agregarAlumno() {
 		},
 		success: function (respuesta) {
 			console.log(respuesta);
-			// Update the datosUsuarios array and add a new row to the table
+
 			traerUsuarios().then(dato => {
 				// Clear the table first
 				$("#tablaPersonas").find("tr:gt(0)").remove();
@@ -74,8 +74,6 @@ function agregarAlumno() {
 		},
 	});
 }
-// Eliminacion de un usuario
-
 function eliminar(pos) {
 	$.ajax({
 		url: '../../../../BackEnd/Gestion de Usuarios/bajaAlumnos.php',

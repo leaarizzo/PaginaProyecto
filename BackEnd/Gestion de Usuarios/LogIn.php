@@ -55,7 +55,7 @@ if ($username == "admin" && $password == "admin") {
         }
         header('Location: ../../Frontend/html/studView/spanish/studIndex.html.php');
 
-    } elseif ($permiso == "Instructor") {
+    } elseif ($permiso == "instructor") {
         $_SESSION['usuario'] = $username;
         $_SESSION['permisos'] = 2;
         if ($recordar) {
