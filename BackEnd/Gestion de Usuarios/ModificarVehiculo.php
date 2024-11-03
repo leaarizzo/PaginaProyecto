@@ -1,13 +1,10 @@
-        <?php
-        require_once 'Controlador.php';
-        require_once 'Vehiculo.php';
-        $controla = new Controlador();
+<?php
+require_once 'Controlador.php';
+$controla = new Controlador();
 
-        $matricula = $_POST['txtMatricula'];
-        $dato = $_POST['txtDato'];
-        $nuevo = $_POST['txtNuevo'];
+$matricula = $_POST['matricula'];
+$dato = $_POST['dato'];
+$nuevo = $_POST['nuevo'];
 
-        $controla->modificarVehiculo($matricula, $dato, $nuevo);
+$controla->modificarVehiculo($matricula, $dato, $nuevo);
 
-        header('Location: vista.html.php');
-        ?>

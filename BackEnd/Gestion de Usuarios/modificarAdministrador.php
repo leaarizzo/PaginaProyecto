@@ -2,9 +2,9 @@
 require_once 'Controlador.php';
 $controla = new Controlador();
 
-$id = $_POST['codigo'];
+$documento = $_POST['cedula'];
 $dato = $_POST['dato'];
 $nuevo = $_POST['nuevo'];
 
-$controla->modificarClase($id, $dato, $nuevo);
+$controla->modificarAdministrador($documento, $dato, $nuevo);
 

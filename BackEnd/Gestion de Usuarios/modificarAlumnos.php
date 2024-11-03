@@ -2,8 +2,6 @@
 require_once 'Controlador.php';
 $controla = new Controlador();
 
-var_dump($_POST);
-
 $documento = $_POST['cedula'];
 
 $dato = $_POST['dato'];
