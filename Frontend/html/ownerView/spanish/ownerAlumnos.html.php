@@ -14,6 +14,282 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>/* Variables globales */
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #2c2c2c;
+  --accent-color: #007bff;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+}
+
+/* Estilos base */
+body {
+  background-color: #f8f9fa;
+  padding-top: 76px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: relative;
+  bottom: 0;
+  width: 250px;
+  background-color: var(--primary-color);
+  padding: 20px 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar a {
+  padding: 15px 25px;
+  color: var(--text-light);
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: var(--accent-color);
+  padding-left: 30px;
+}
+
+.sidebar .active {
+  background-color: var(--accent-color);
+  border-left: 4px solid white;
+}
+
+/* Dropdown en sidebar */
+.dropdown-sidebar {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 15px 25px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropdown-sidebar:hover {
+  background-color: var(--accent-color);
+}
+
+.dropdown-container {
+  display: none;
+  background-color: var(--secondary-color);
+  padding-left: 15px;
+}
+
+/* Contenido principal */
+.adminCont {
+  margin-left: 250px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Cards y tablas */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+   text-align: left;
+   padding: 12px 8px;
+border-top: none;
+  background-color: #f8f9fa;
+  font-weight: 100;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: var(--accent-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 40px 0;
+  margin-top: 40px;
+  margin-left: 250px;
+}
+
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-content li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.footer-content a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: var(--accent-color);
+}
+
+/* Modls */
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-bottom: 1px solid #eee;
+}
+
+.input-group-text {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+}
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    padding: 0;
+  }
+  
+  .adminCont, .site-footer {
+    margin-left: 0;
+  }
+  
+  .sidebar.active {
+    width: 250px;
+    padding: 20px 0;
+  }
+}
+
+
+.dataTables_wrapper .dataTables_filter input {
+  margin-left: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.dt-buttons {
+  margin-bottom: 1em;
+}
+
+.dt-button {
+  padding: 0.5em 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-right: 0.5em;
+}
+
+td{
+    text-align: left;
+   padding: 12px 8px;
+}
+
+
+.ul1 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.li1 {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.a1 {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.a1:hover {
+  color: var(--accent-color);
+}
+.close {
+    display: inline-block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    background-color: #6c757d;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.close:hover {
+    background-color: #495057;
+    transform: scale(1.1);
+}
+
+.close:active {
+    transform: scale(0.9);
+}
+
+.close span {
+    display: inline-block;
+    transform: translateY(-1px);
+}
+</style>
+
 </head>
 
 <body class="body2">
