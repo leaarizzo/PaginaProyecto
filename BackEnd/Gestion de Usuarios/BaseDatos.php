@@ -601,7 +601,7 @@ class BaseDatos
 
     public function seleccionarInstructores()
     {
-        $resultadoInstructores = mysqli_query($this->conexion, "select * from tablaInstructores]");
+        $resultadoInstructores = mysqli_query($this->conexion, "select * from tablaInstructores");
         $arreglo = mysqli_fetch_all($resultadoInstructores, MYSQLI_ASSOC);
         return $arreglo;
     }

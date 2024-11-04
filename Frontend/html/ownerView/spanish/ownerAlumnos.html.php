@@ -251,9 +251,7 @@
                                         <option value="passwrd"> Password </option>
                                         <option value="permisos"> Permisos </option>
                                         <option value="fechaInscripcion"> Fecha Inscripcion </option>
-                                        <option value="horarios"> Horarios </option>
                                         <option value="estadoTeorico"> Estado Teorico </option>
-                                        <option value="categoriaLibreta"> Categoria Libreta </option>
                                         <option value="categoriaClase"> Categoria Clase </option>
                                     </select>
                                 </div>
@@ -300,28 +298,6 @@
     </div>
 
     <div class="row">
-
-        < class="site-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <ul class="ul1">
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
-
-                    <div class="footer-abajo">
-                        <a href="#" class="footer-link">Servicios</a>
-                        <a href="guestLandingSpanish.html" class="footer-logo">
-                            <img src="../../../img/logo.png" alt="Logo" width="200" height="67">
-                        </a>
-                        <a href="#" class="footer-link">Contactanos</a>
-                    </div>
-                </div>
-            </div>
-            </footer>
 
 </body>
 

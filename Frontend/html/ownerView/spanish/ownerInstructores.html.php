@@ -95,36 +95,247 @@
 
     <div class="adminCont">
 
-        <a href="ownerLandingSpanish.html.php"> Volver </a>
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h2 class="card-title text-uppercase mb-0"> INSTRUCTORES </h2>
+                                    <button type="button" class="btn btn-primary" onclick="mostrarModalAgregar()">
+                                        <i class="fas fa-plus"></i> Añadir Instructor
+                                    </button>
+                                </div>
 
-        <h1> Owner Instructores </h1>
+                                <!-- MODAL DE AÑADIR USUARIO -->
+                                <div id="addModal" class="modal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Añadir nuevo alumno</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModalAgregar()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Documento</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoDocumento" class="form-control" placeholder="Número de documento">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Username</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoUsername" class="form-control" placeholder="Username">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Nombre</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoNombre" class="form-control" placeholder="Nombre">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Apellido</span>
+                                                    </div>
+                                                    <input type="text" id="txtNuevoApellido" class="form-control" placeholder="Apellido">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Fecha Nacimiento</span>
+                                                    </div>
+                                                    <input type="date" id="txtNuevaFechaNacimiento" class="form-control">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Teléfono</span>
+                                                    </div>
+                                                    <input type="tel" id="txtNuevoTelefono" class="form-control" placeholder="Teléfono">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Correo</span>
+                                                    </div>
+                                                    <input type="email" id="txtNuevoCorreo" class="form-control" placeholder="Correo electrónico">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Contraseña</span>
+                                                    </div>
+                                                    <input type="password" id="txtNuevaPassword" class="form-control" placeholder="Contraseña">
+                                                </div>
+
+                                                <div class>
+                                                    <label for="txtLunes"> Lunes </label>
+                                                    <input type="checkbox" name="txtLunes" id="txtLunes">
+                                                    <br>
+                                                    <label for="txtMartes"> Martes </label>
+                                                    <input type="checkbox" name="txtMartes" id="txtMartes">
+                                                    <br>
+                                                    <label for="txtMiercoles"> Miercoles </label>
+                                                    <input type="checkbox" name="txtMiercoles" id="txtMiercoles">
+                                                    <br>
+                                                    <label for="txtJueves"> Jueves </label>
+                                                    <input type="checkbox" name="txtJueves" id="txtJueves">
+                                                    <br>
+                                                    <label for="txtViernes"> Viernes </label>
+                                                    <input type="checkbox" name="txtViernes" id="txtViernes">
+                                                    <br>
+                                                    <label for="txtSabado"> Sabado </label>
+                                                    <input type="checkbox" name="txtSabado" id="txtSabado">
+                                                </div>
+                                                <br>
+
+                                                <!-- Categoria Clase -->
+                                                <label for="txtClaseA"> Categoria Clase A </label>
+                                                <input type="checkbox" name="txtClaseA" id="txtClaseA">
+                                                <br>
+                                                <label for="txtClaseB"> Categoria Clase B </label>
+                                                <input type="checkbox" name="txtClaseB" id="txtClaseB">
+                                                <br>
+                                                <label for="txtClaseC"> Categoria Clase C </label>
+                                                <input type="checkbox" name="txtClaseC" id="txtClaseC">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModalAgregar()">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" onclick="agregarInstructor()">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tablaPersonas" class="table no-wrap user-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Documento</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Username</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Apellido</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Fecha Nacimiento</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Telefono</th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium">Correo</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL DE MODIFCACIONES -->
+            <div id="modifModal" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modificar usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <input type="hidden" id="txtID">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Dato a Modificar</span>
+                                </div>
+                                <div class="form-group">
+                                    <select id="txtDato" name="txtDato" class="form-control" placeholder="Dato a Editar">
+                                        <option value="nombre"> Nombre </option>
+                                        <option value="apellido"> Apellido </option>
+                                        <option value="fechaNacimiento"> Fecha Nacimiento </option>
+                                        <option value="telefono"> Telefono </option>
+                                        <option value="correo"> Correo Electronico </option>
+                                        <option value="username"> Username </option>
+                                        <option value="passwrd"> Password </option>
+                                        <option value="permisos"> Permisos </option>
+                                        <option value="fechaInscripcion"> Fecha Inscripcion </option>
+                                        <option value="horarios"> Horarios </option>
+                                        <option value="categoriaClase"> Categoria Clase </option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Nuevo Dato</span>
+                                </div>
+                                <input type="text" id="txtNuevo" class="form-control" placeholder="nuevo dato" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"> Horarios</span>
+                                </div>
+                                <div class>
+                                    <label for="txtLunes"> Lunes </label>
+                                    <input type="checkbox" name="txtLunes" id="txtLunes">
+                                    <br>
+                                    <label for="txtMartes"> Martes </label>
+                                    <input type="checkbox" name="txtMartes" id="txtMartes">
+                                    <br>
+                                    <label for="txtMiercoles"> Miercoles </label>
+                                    <input type="checkbox" name="txtMiercoles" id="txtMiercoles">
+                                    <br>
+                                    <label for="txtJueves"> Jueves </label>
+                                    <input type="checkbox" name="txtJueves" id="txtJueves">
+                                    <br>
+                                    <label for="txtViernes"> Viernes </label>
+                                    <input type="checkbox" name="txtViernes" id="txtViernes">
+                                    <br>
+                                    <label for="txtSabado"> Sabado </label>
+                                    <input type="checkbox" name="txtSabado" id="txtSabado">
+                                </div>
+                                <br>
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"> Horarios</span>
+                                </div>
+                                <div>
+                                    <!-- Categoria Clase -->
+                                    <label for="txtClaseA"> Categoria Clase A </label>
+                                    <input type="checkbox" name="txtClaseA" id="txtClaseA">
+                                    <br>
+                                    <label for="txtClaseB"> Categoria Clase B </label>
+                                    <input type="checkbox" name="txtClaseB" id="txtClaseB">
+                                    <br>
+                                    <label for="txtClaseC"> Categoria Clase C </label>
+                                    <input type="checkbox" name="txtClaseC" id="txtClaseC">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+                            <div id="btnGuardarCont"></div>
+                            <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
 
 
     </div>
 
     <div class="row">
-
-        <footer class="site-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <ul class="ul1">
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
-
-                    <div class="footer-abajo">
-                        <a href="#" class="footer-link">Servicios</a>
-                        <a href="guestLandingSpanish.html" class="footer-logo">
-                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
-                        </a>
-                        <a href="#" class="footer-link">Contactanos</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
 </body>
 
@@ -141,15 +352,19 @@
         }
     }
 
+
+
     var dropdown = document.getElementsByClassName("dropdown-sidebar");
     for (var i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", dropdownSidebar);
     }
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../js/manejoInstructores.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-<script src="../../js/script.js"></script>
+
 
 </html>
