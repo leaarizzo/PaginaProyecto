@@ -75,6 +75,7 @@ function agregarAlumno() {
 	});
 }
 function eliminar(pos) {
+	if (confirm('¿Está seguro de que desea eliminar este alumno?')) {
 	$.ajax({
 		url: '../../../../BackEnd/Gestion de Usuarios/bajaAlumnos.php',
 		method: 'POST',
@@ -90,7 +91,7 @@ function eliminar(pos) {
 	});
 	$("#" + pos).remove();
 }
-
+}
 
 function guardarCambios(pos) {
 	$.ajax({
