@@ -1,7 +1,7 @@
 datosUsuarios = []; //Array global para manejo de usuarios
 
 async function traerUsuarios() {
-	const response = await fetch('../../../../BackEnd/Gestion de Usuarios/listarInstructores.php'
+	const response = await fetch('../../../../BackEnd/Gestion de Usuarios/listarAdministradores.php'
 		, {
 			method: 'GET',
 		});
@@ -21,7 +21,7 @@ traerUsuarios().then(dato => {
 
 function filaNueva(infoPersona, pos) {
     var fila = "<tr id=" + pos + ">"
-        + "<td id='txtDocumento" + pos + "' class='pl-4'>" + infoPersona.documentoInstructor + "</td>"
+        + "<td id='txtDocumento" + pos + "' class='pl-4'>" + infoPersona.documentoAdmin + "</td>"
         + "<td id='txtUsername" + pos + "'>" + infoPersona.username + "</td>"
         + "<td id='txtNombre" + pos + "'>" + infoPersona.nombre + "</td>"
         + "<td id='txtApellido" + pos + "'>" + infoPersona.apellido + "</td>"
@@ -36,9 +36,9 @@ function filaNueva(infoPersona, pos) {
 }
 
 
-function agregarAlumno() {
+function agregarAdministrador() {
 	$.ajax({
-		url: '../../../../BackEnd/Gestion de Usuarios/altaInstructor.php',
+		url: '../../../../BackEnd/Gestion de Usuarios/altaAdmin.php',
 		method: 'POST',
 		data: {
 			documento: $('#txtNuevoDocumento').val(),
@@ -49,15 +49,6 @@ function agregarAlumno() {
 			telefono: $('#txtNuevoTelefono').val(),
 			correo: $('#txtNuevoCorreo').val(),
 			password: $('#txtNuevaPassword').val(),
-			claseA: $('#txtClaseA').val(),
-			claseB: $('#txtClaseB').val(),
-			claseC: $('#txtClaseC').val(),
-			lunes: $('#txtLunes').val(),
-			martes: $('#txtMartes').val(),
-			miercoles: $('#txtMiercoles').val(),
-			jueves: $('#txtJueves').val(),
-			viernes: $('#txtViernes').val(),
-			sabado: $('#txtSabado').val(),
 		},
 		success: function (respuesta) {
 			console.log(respuesta);
@@ -79,12 +70,12 @@ function agregarAlumno() {
 	});
 }
 function eliminar(pos) {
-	if (confirm('¿Está seguro de que desea eliminar este instructor?')) {
+	if (confirm('¿Está seguro de que desea eliminar este administrador?')) {
 	$.ajax({
-		url: '../../../../BackEnd/Gestion de Usuarios/bajaInstructor.php',
+		url: '../../../../BackEnd/Gestion de Usuarios/bajaAdministrador.php',
 		method: 'POST',
 		data: {
-			dato: datosUsuarios[pos].documentoInstructor
+			dato: datosUsuarios[pos].documentoAdmin
 		},
 		success: function (respuesta) {
 			console.log(respuesta);
@@ -99,10 +90,10 @@ function eliminar(pos) {
 
 function guardarCambios(pos) {
 	$.ajax({
-		url: '../../../../BackEnd/Gestion de Usuarios/modificarInstructores.php',
+		url: '../../../../BackEnd/Gestion de Usuarios/modificarAdministrador.php',
 		method: 'POST',
 		data: {
-			cedula: datosUsuarios[pos].documentoInstructor,
+			cedula: datosUsuarios[pos].documentoAlumno,
 			dato: $('#txtDato').val(),
 			nuevo: $('#txtNuevo').val(),
 			catA: $('#txtA').val(),
@@ -175,9 +166,9 @@ function cerrarModalAgregar() {
     $('#addModal').css("display", "none");
 }
 
-function agregarInstructor() {
+function agregarAlumno() {
     $.ajax({
-        url: '../../../../BackEnd/Gestion de Usuarios/altaInstructor.php',
+        url: '../../../../BackEnd/Gestion de Usuarios/altaAlumnos.php',
         method: 'POST',
         data: {
             documento: $('#txtNuevoDocumento').val(),
@@ -188,17 +179,9 @@ function agregarInstructor() {
             telefono: $('#txtNuevoTelefono').val(),
             correo: $('#txtNuevoCorreo').val(),
             password: $('#txtNuevaPassword').val(),
-           
-			claseA: $('#txtClaseA').is(':checked') ? 1 : 0,
-			claseB: $('#txtClaseB').is(':checked') ? 1 : 0,
-			claseC: $('#txtClaseC').is(':checked') ? 1 : 0,
-			
-			lunes: $('#txtLunes').is(':checked') ? 1 : 0,
-			martes: $('#txtMartes').is(':checked') ? 1 : 0,
-			miercoles: $('#txtMiercoles').is(':checked') ? 1 : 0,
-			jueves: $('#txtJueves').is(':checked') ? 1 : 0,
-			viernes: $('#txtViernes').is(':checked') ? 1 : 0,
-			sabado: $('#txtSabado').is(':checked') ? 1 : 0,
+            catA: $('#txtNuevoA').is(':checked') ? 1 : 0,
+            catB: $('#txtNuevoB').is(':checked') ? 1 : 0,
+            catC: $('#txtNuevoC').is(':checked') ? 1 : 0
         },
         success: function (respuesta) {
             console.log(respuesta);

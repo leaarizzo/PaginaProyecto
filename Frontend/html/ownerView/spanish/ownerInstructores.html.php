@@ -264,7 +264,6 @@
                                         <option value="username"> Username </option>
                                         <option value="passwrd"> Password </option>
                                         <option value="permisos"> Permisos </option>
-                                        <option value="fechaInscripcion"> Fecha Inscripcion </option>
                                         <option value="horarios"> Horarios </option>
                                         <option value="categoriaClase"> Categoria Clase </option>
                                     </select>

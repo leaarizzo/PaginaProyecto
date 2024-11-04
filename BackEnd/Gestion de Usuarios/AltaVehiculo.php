@@ -8,7 +8,7 @@ $modelo = $_POST['modelo'];
 $motor = $_POST['motor'];
 $combustible = $_POST['combustible'];
 $medida = $_POST['medida'];
-$situacionActual = $_POST['situacionActual'];
+$situacionActual = $_POST['situacion'];
 $kilometraje = $_POST['kilometraje'];
 $categoria = $_POST['categoria'];
 

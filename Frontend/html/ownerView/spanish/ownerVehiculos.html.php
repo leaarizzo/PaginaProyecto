@@ -83,7 +83,7 @@
         <div class="dropdown-container">
             <a href="ownerAlumnos.html.php"> Alumnos </a>
             <a href="ownerInstructores.html.php"> Instructores </a>
-            <a  href="ownerAdministradores.html.php"> Administradores </a>
+            <a href="ownerAdministradores.html.php"> Administradores </a>
         </div>
 
         <a href="ownerCursos.html.php"> Clases </a>
@@ -95,36 +95,173 @@
 
     <div class="adminCont">
 
-        <a href="ownerLandingSpanish.html.php"> Volver </a>
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h2 class="card-title text-uppercase mb-0"> VEHICULOS </h2>
+                                    <button type="button" class="btn btn-primary" onclick="mostrarModalAgregar()">
+                                        <i class="fas fa-plus"></i> Añadir Vehiculo
+                                    </button>
+                                </div>
 
-        <h1> Owner Vehiculos </h1>
+                                <!-- MODAL DE AÑADIR VEHICULO -->
+                                <div id="addModal" class="modal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Añadir nuevo Vehiculo </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModalAgregar()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Matricula </span>
+                                                    </div>
+                                                    <input type="text" id="txtMatricula" class="form-control" placeholder="Número de matricula">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Modelo </span>
+                                                    </div>
+                                                    <input type="text" id="txtModelo" class="form-control" placeholder="Modelo del Vehiculo">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Motor </span>
+                                                    </div>
+                                                    <input type="text" id="txtMotor" class="form-control" placeholder="Motor">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Combustible </span>
+                                                    </div>
+                                                    <input type="text" id="txtCombustible" class="form-control" placeholder="Tipo de Combustible">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Medidas </span>
+                                                    </div>
+                                                    <input type="text" id="txtMedida" class="form-control" placeholder="Medidas del Vehiculo">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Situacion Actual </span>
+                                                    </div>
+                                                    <input type="text" id="txtSituacion" class="form-control" placeholder="Situacion del Vehiculo">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Kilometraje </span>
+                                                    </div>
+                                                    <input type="number" id="txtKilometraje" class="form-control" placeholder="Kilometraje del Vehiculo">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Categoria </span>
+                                                    </div>
+                                                    <input type="text" id="txtCategoria" class="form-control" placeholder="Categoria del Vehiculo">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModalAgregar()">Cerrar</button>
+                                                <button type="button" class="btn btn-primary" onclick="agregarVehiculo()">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tablaVehiculos" class="table no-wrap user-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Matricula </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Modelo </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Motor </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Combustible </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Medida </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Situacion Actual </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Kilometraje </th>
+                                            <th scope="col" class="border-0 text-uppercase font-medium"> Categoria </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL DE MODIFCACIONES -->
+            <div id="modifModal" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modificar Vehiculo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <input type="hidden" id="txtID">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Dato a Modificar</span>
+                                </div>
+                                <div class="form-group">
+                                    <select id="txtDato" name="txtDato" class="form-control" placeholder="Dato a Editar">
+                                        <option value="modelo"> Modelo </option>
+                                        <option value="motor"> Motor </option>
+                                        <option value="combustible"> Combustible </option>
+                                        <option value="medida"> Medida </option>
+                                        <option value="situacionActual"> Situacion Actual </option>
+                                        <option value="kilometraje"> Kilometraje </option>
+                                        <option value="categoria"> Categoria </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Nuevo Dato</span>
+                                </div>
+                                <input type="text" id="txtNuevo" class="form-control" placeholder="nuevo dato" aria-describedby="basic-addon1">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+                            <div id="btnGuardarCont"></div>
+                            <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
 
 
     </div>
 
     <div class="row">
-
-        <footer class="site-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <ul class="ul1">
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
-
-                    <div class="footer-abajo">
-                        <a href="#" class="footer-link">Servicios</a>
-                        <a href="guestLandingSpanish.html" class="footer-logo">
-                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
-                        </a>
-                        <a href="#" class="footer-link">Contactanos</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
 </body>
 
@@ -141,15 +278,19 @@
         }
     }
 
+
+
     var dropdown = document.getElementsByClassName("dropdown-sidebar");
     for (var i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", dropdownSidebar);
     }
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../js/manejoVehiculos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-<script src="../../js/script.js"></script>
+
 
 </html>
