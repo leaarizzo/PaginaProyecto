@@ -438,13 +438,14 @@ class BaseDatos
 
     public function modificarCurso($codigocurso, $dato, $nuevo)
     {
+        var_dump($dato);     
         switch ($dato) {
-            case 'codigoAlumno':
-                $modificar = "update curso set codigoAlumno = '$nuevo' where codigo = '$codigocurso'";
+            case 'documentoAlumno':
+                $modificar = "update curso set documentoAlumno = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
-            case 'codigoInstructor':
-                $modificar = "update curso set codigoInstructor = '$nuevo' where codigo = '$codigocurso'";
+            case 'documentoInstructor':
+                $modificar = "update curso set documentoInstructor = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'matricula':
@@ -472,7 +473,7 @@ class BaseDatos
                 mysqli_query($this->conexion, $modificar);
                 break;
             case 'tipo':
-                $modificar = "update curso set tipo = '$nuevo' where codigo = '$codigocurso'";
+                $modificar = "update curso set Tipo = '$nuevo' where codigo = '$codigocurso'";
                 mysqli_query($this->conexion, $modificar);
                 break;
         }

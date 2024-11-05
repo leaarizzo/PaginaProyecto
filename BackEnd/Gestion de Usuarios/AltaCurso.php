@@ -2,14 +2,19 @@
 require_once 'Controlador.php';
 $controla = new Controlador();
 
+$cantidad = $_POST['cantidad'];
 $documentoAlumno = $_POST['documentoAlumno'];
 $documentoInstructor = $_POST['documentoInstructor'];
 $matricula = $_POST['matricula'];
-$precio = $_POST['precio'];
-$hora = $_POST['hora'];
-$fecha = $_POST['fecha'];
+$precioGrup = $_POST['precio'];
+$hora = 0000;
+$fecha = 0-0-0;
 $tipoLibreta = $_POST['tipoLibreta'];
-$resultado = $_POST['resultado'];
-$tipo = $_POST['opcion'];
+$resultado = "pendiente";
+$tipo = $_POST['tipo'];
 
-$controla->altaCurso($documentoAlumno, $documentoInstructor, $matricula, $precio, $hora, $fecha, $tipoLibreta, $resultado, $tipo);
+$precio = $precioGrup / $cantidad;
+
+for ($i=0; $i < $cantidad ; $i++) { 
+    $controla->altaCurso($documentoAlumno, $documentoInstructor, $matricula, $precio, $hora, $fecha, $tipoLibreta, $resultado, $tipo);
+}
