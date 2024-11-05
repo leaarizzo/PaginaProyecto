@@ -245,7 +245,7 @@ class BaseDatos
     {
         $eliminar = "delete from preguntas where id_Pregunta = '$codigoPregunta'";
         mysqli_query($this->conexion, $eliminar);
-        $eliminar = "delete from opciones where id_pregunta = '$codigoPregunta'";
+        $eliminar = "delete from o nbpciones where id_pregunta = '$codigoPregunta'";
         mysqli_query($this->conexion, $eliminar);
     }
 
