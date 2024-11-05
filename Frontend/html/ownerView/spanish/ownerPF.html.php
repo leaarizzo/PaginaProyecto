@@ -15,6 +15,283 @@
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+<style>
+    /* Variables globales */
+    :root {
+        --primary-color: #1a1a1a;
+        --secondary-color: #2c2c2c;
+        --accent-color: #007bff;
+        --text-light: #ffffff;
+        --text-dark: #333333;
+    }
+
+    /* Estilos base */
+    body {
+        background-color: #f8f9fa;
+        padding-top: 76px;
+    }
+
+    /* Navbar */
+    .navbar {
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    }
+
+    .navbar-brand img {
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-brand img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: relative;
+        bottom: 0;
+        width: 250px;
+        background-color: var(--primary-color);
+        padding: 20px 0;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .sidebar a {
+        padding: 15px 25px;
+        color: var(--text-light);
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar a:hover {
+        background-color: var(--accent-color);
+        padding-left: 30px;
+    }
+
+    .sidebar .active {
+        background-color: var(--accent-color);
+        border-left: 4px solid white;
+    }
+
+    /* Dropdown en sidebar */
+    .dropdown-sidebar {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        padding: 15px 25px;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-sidebar:hover {
+        background-color: var(--accent-color);
+    }
+
+    .dropdown-container {
+        display: none;
+        background-color: var(--secondary-color);
+        padding-left: 15px;
+    }
+
+    /* Contenido principal */
+    .adminCont {
+        margin-left: 250px;
+        padding: 20px;
+        transition: all 0.3s ease;
+    }
+
+    /* Cards y tablas */
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background-color: white;
+        border-bottom: 1px solid #eee;
+        padding: 20px;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table th {
+        text-align: left;
+        padding: 12px 8px;
+        border-top: none;
+        background-color: #f8f9fa;
+        font-weight: 100;
+    }
+
+    /* Botones */
+    .btn-primary {
+        background-color: var(--accent-color);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    }
+
+    /* Footer */
+    .site-footer {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        padding: 40px 0;
+        margin-top: 40px;
+        margin-left: 250px;
+    }
+
+    .footer-content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-content li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .footer-content a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .footer-content a:hover {
+        color: var(--accent-color);
+    }
+
+    /* Modls */
+    .modal-content {
+        border-radius: 10px;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #eee;
+    }
+
+    .input-group-text {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+    }
+
+
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 0;
+            padding: 0;
+        }
+
+        .adminCont,
+        .site-footer {
+            margin-left: 0;
+        }
+
+        .sidebar.active {
+            width: 250px;
+            padding: 20px 0;
+        }
+    }
+
+
+    .dataTables_wrapper .dataTables_filter input {
+        margin-left: 0.5em;
+        padding: 0.5em;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .dataTables_wrapper .dataTables_length select {
+        padding: 0.5em;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .dt-buttons {
+        margin-bottom: 1em;
+    }
+
+    .dt-button {
+        padding: 0.5em 1em;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        margin-right: 0.5em;
+    }
+
+    td {
+        text-align: left;
+        padding: 12px 8px;
+    }
+
+
+    .ul1 {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .li1 {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .a1 {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .a1:hover {
+        color: var(--accent-color);
+    }
+
+    .close {
+        display: inline-block;
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background-color: #6c757d;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 32px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .close:hover {
+        background-color: #495057;
+        transform: scale(1.1);
+    }
+
+    .close:active {
+        transform: scale(0.9);
+    }
+
+    .close span {
+        display: inline-block;
+        transform: translateY(-1px);
+    }
+</style>
 
 <body class="body2">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
@@ -83,7 +360,7 @@
         <div class="dropdown-container">
             <a href="ownerAlumnos.html.php"> Alumnos </a>
             <a href="ownerInstructores.html.php"> Instructores </a>
-            <a  href="ownerAdministradores.html.php"> Administradores </a>
+            <a href="ownerAdministradores.html.php"> Administradores </a>
         </div>
 
         <a href="ownerCursos.html.php"> Clases </a>
@@ -95,36 +372,130 @@
 
     <div class="adminCont">
 
-        <a href="ownerLandingSpanish.html.php"> Volver </a>
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h2 class="card-title text-uppercase mb-0"> preguntas del autotest </h2>
+                                    <button type="button" class="btn btn-primary" onclick="mostrarModalAgregar()">
+                                        <i class="fas fa-plus"></i> Añadir pregunta
+                                    </button>
+                                </div>
 
-        <h1> Owner PF </h1>
+                                <!-- MODAL DE AÑADIR USUARIO -->
+                                <div id="addModal" class="modal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Añadir nueva pregunta</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModalAgregar()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Pregunta </span>
+                                                    </div>
+                                                    <input type="text" id="txtPregunta" class="form-control" placeholder="Nueva Pregunta">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Respuesta </span>
+                                                    </div>
+                                                    <input type="text" id="txtRespuesta" class="form-control" placeholder="Respuesta Correcta">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Opcion 1 </span>
+                                                    </div>
+                                                    <input type="text" id="txtOpcion1" class="form-control" placeholder="Opcion 1">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Opcion 2 </span>
+                                                    </div>
+                                                    <input type="text" id="txtOpcion2" class="form-control" placeholder="Opcion 2">
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"> Opcion 3 </span>
+                                                    </div>
+                                                    <input type="text" id="txtOpcion3" class="form-control" placeholder="Opcion 3">
+                                                </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModalAgregar()">Cerrar</button>
+                                                    <button type="button" class="btn btn-primary" onclick="agregarPregunta()">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="tablaPreguntas" class="table no-wrap user-table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="border-0 text-uppercase font-medium"> Id </th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium"> Pregunta </th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium"> Respuesta </th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium"> Opciones </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL DE MODIFCACIONES -->
+                <div id="modifModal" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modificar usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <input type="hidden" id="txtID">
+                                    
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Nueva Pregunta</span>
+                                    </div>
+                                    <input type="text" id="txtNuevo" class="form-control" placeholder="nueva pregunta" aria-describedby="basic-addon1">
+                                </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+                                <div id="btnGuardarCont"></div>
+                                <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
 
     </div>
 
     <div class="row">
-
-        <footer class="site-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <ul class="ul1">
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                        <li class="li1"><a class="a1" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
-
-                    <div class="footer-abajo">
-                        <a href="#" class="footer-link">Servicios</a>
-                        <a href="guestLandingSpanish.html" class="footer-logo">
-                            <img src="../../img/logo.png" alt="Logo" width="200" height="67">
-                        </a>
-                        <a href="#" class="footer-link">Contactanos</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
 </body>
 
@@ -141,15 +512,19 @@
         }
     }
 
+
+
     var dropdown = document.getElementsByClassName("dropdown-sidebar");
     for (var i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", dropdownSidebar);
     }
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../js/manejoPreguntas.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-<script src="../../js/script.js"></script>
+
 
 </html>

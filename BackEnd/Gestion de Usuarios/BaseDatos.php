@@ -159,6 +159,27 @@ class BaseDatos
         return mysqli_query($this->conexion, $insertar);
     }
 
+    public function ingresarPregunta($pregunta, $respuesta){
+        $insertar = "insert into preguntas values('','$pregunta','$respuesta')";
+        return mysqli_query($this->conexion, $insertar);
+    }
+
+    public function ingresarOpciones($pregunta, $opciones) {
+        $consulta = "SELECT id_pregunta FROM preguntas WHERE pregunta = '$pregunta'";
+        $resultado = mysqli_query($this->conexion, $consulta);
+        $row = mysqli_fetch_assoc($resultado);
+        $id_pregunta = $row['id_pregunta'];
+    
+        var_dump($id_pregunta);
+
+        for ($i = 0; $i < count($opciones); $i++) {
+            $insertar = "INSERT INTO opciones VALUES ('$id_pregunta', '$opciones[$i]')";
+            mysqli_query($this->conexion, $insertar);
+        }
+    
+        return $id_pregunta;
+    }
+
     /**************************************/
     /*               BAJAS                */
     /**************************************/
@@ -216,6 +237,16 @@ class BaseDatos
     {
         $eliminar = "update curso set activo = 0 where codigo = '$codigocurso'";
         return mysqli_query($this->conexion, $eliminar);
+    }
+
+    // Bajas de Preguntas en Tablas
+
+    public function eliminarPregunta($codigoPregunta)
+    {
+        $eliminar = "delete from preguntas where id_Pregunta = '$codigoPregunta'";
+        mysqli_query($this->conexion, $eliminar);
+        $eliminar = "delete from opciones where id_pregunta = '$codigoPregunta'";
+        mysqli_query($this->conexion, $eliminar);
     }
 
     /**************************************/
@@ -480,6 +511,7 @@ class BaseDatos
     }
 
 
+
     /**************************************/
     /*           LOG IN                   */
     /**************************************/
@@ -584,6 +616,12 @@ class BaseDatos
 
 
     // Seleccionar Tabla completa
+
+    public function seleccionarPreguntas(){
+        $resultado = mysqli_query($this->conexion,"SELECT * FROM TablaPreguntas");
+        $arreglo = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+        return $arreglo;
+    }
 
     public function seleccionarAlumnos()
     {

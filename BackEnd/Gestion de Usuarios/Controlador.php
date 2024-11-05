@@ -64,6 +64,13 @@ class Controlador{
         $this->base->ingresarCurso($curso);
     }
 
+    public function altaPregunta(string $pregunta, string $respuesta, array $opciones)
+    {
+        
+        $this->base->ingresarPregunta($pregunta, $respuesta );
+        $this->base->ingresarOpciones($pregunta , $opciones);
+    }
+
     
 
     /********************************/
@@ -105,6 +112,10 @@ class Controlador{
         
     }
 
+    public function bajaPregunta(String $codigoPregunta)
+    {
+        $this->base->eliminarPregunta($codigoPregunta);
+    }
 
 
     /********************************/
@@ -140,6 +151,11 @@ class Controlador{
     public function modificarClase($codigoClase, $dato, $nuevo)
     {
         $this->base->modificarCurso($codigoClase, $dato, $nuevo);
+    }
+
+    public function modificarPregunta($codigoPregunta, $nuevo)
+    {
+        $this->base->modificarPreguntas($codigoPregunta, $nuevo);
     }
 
     /********************************/
@@ -220,4 +236,12 @@ class Controlador{
     {
         return $this->base->seleccionarCursos();
     }
+
+    /* Traer Tabla Preguntas */
+                                                                                                                                                                                                  
+    public function traerTablaPreguntas()
+    {
+        return $this->base->seleccionarPreguntas();
+    }
+   
 }
