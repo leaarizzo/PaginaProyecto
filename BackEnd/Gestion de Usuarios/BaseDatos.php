@@ -288,8 +288,8 @@ class BaseDatos
                 mysqli_query($this->conexion, $modificar);
                 break;
 
-            case 'password':
-                $modificar = "update alumno set password = '$nuevo' where documentoAlumno = '$documento'";
+            case 'passwrd':
+                $modificar = "update alumno set passwrd = '$nuevo' where documentoAlumno = '$documento'";
                 mysqli_query($this->conexion, $modificar);
                 break;
 
@@ -350,8 +350,8 @@ class BaseDatos
                 mysqli_query($this->conexion, $modificar);
                 break;
 
-            case 'password':
-                $modificar = "update instructor set password = '$nuevo' where documentoInstructor = '$documento'";
+            case 'passwrd':
+                $modificar = "update instructor set passwrd = '$nuevo' where documentoInstructor = '$documento'";
                 mysqli_query($this->conexion, $modificar);
                 break;
 
@@ -412,8 +412,8 @@ class BaseDatos
                 mysqli_query($this->conexion, $modificar);
                 break;
 
-            case 'password':
-                $modificar = "update administrador set password = '$nuevo' where documentoAdmin = '$documento'";
+            case 'passwrd':
+                $modificar = "update administrador set passwrd = '$nuevo' where documentoAdmin = '$documento'";
                 mysqli_query($this->conexion, $modificar);
                 break;
 
@@ -557,30 +557,6 @@ class BaseDatos
             }
         }
         return $arreglo;
-    }
-
-    // Comprobar Usuario
-    public function comprobarUsuario($username)
-    {
-        $consulta = "select * from alumno where username = '$username'";
-        $resultado = mysqli_query($this->conexion, $consulta);
-        $arreglo = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-        $usuario = $this->seleccionarAlumno($username);
-
-        if (count($arreglo) == 0) {
-            $consulta = "select * from instructor where username = '$username'";
-            $resultado = mysqli_query($this->conexion, $consulta);
-            $arreglo = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-            $usuario = $this->seleccionarInstructor($username);
-
-            if (count($arreglo) == 0) {
-                $consulta = "select * from administrador where username = '$username'";
-                $resultado = mysqli_query($this->conexion, $consulta);
-                $arreglo = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-                $usuario = $this->seleccionarAdmin($username);
-            }
-        }
-        return $usuario;
     }
 
     /**************************************/

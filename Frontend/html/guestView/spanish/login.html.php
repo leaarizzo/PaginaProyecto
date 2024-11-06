@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
 <link rel="stylesheet" href="../../../css/style.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="body1">
@@ -80,7 +81,13 @@
       <form action="../../../../BackEnd/Gestion de Usuarios/LogIn.php" method="post">
 <h1>Iniciar Sesion</h1>
 
-
+<?php
+session_start();
+if (isset($_SESSION['error_message'])) {
+    echo "<div class='alert alert-danger'>" . $_SESSION['error_message'] . "</div>";
+    unset($_SESSION['error_message']);
+}
+?>
 
 <div class="input-box">
     <input type="text" name="txtUsername" id="txtUsername" placeholder="Usuario" required>
@@ -92,11 +99,16 @@
 </div>
 
 <div class="olvide">
-<label> <input type="checkbox" id="recordar">recuerdame</label>
+<label> <input type="checkbox" id="recordar">Recuerdame</label>
 
-<a href="#">Olvidaste la cotraseña?</a>
+<a href="olvidePassword.html.php">Olvidaste la cotraseña?</a>
 
 </div>
+
+<div class="g-recaptcha" data-sitekey="6LeyN3YqAAAAAHgxkSWvCG2FU4S_O0VyuVsoTEfe" style="display: flex;
+    justify-content: center;
+    margin: 20px 0; "></div>
+
 <button type="submit" class="btn">Entrar</button>
 
 
@@ -104,3 +116,5 @@
         
     </div>
 </body>
+
+</html>

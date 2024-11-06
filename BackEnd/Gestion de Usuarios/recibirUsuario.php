@@ -3,9 +3,15 @@
 require_once 'Controlador.php';
 $controla = new Controlador();
 
-$username = $_POST['txtUsername'];
+$username = $_SESSION['username'];
+$permiso = $_SESSION['permisos'];
 
-$arreglo =  $controla->comprobarUsuario($username); 
+if ($permiso > 3) {
+    $arreglo = $controla->seleccionarAdministrador($username);
+} else if ($permiso = 2) {
+    $arreglo = $controla->seleccionarInstructor(username: $username);
+} else if ($permiso = 1) {
+    $arreglo = $controla->seleccionarAlumo($username);
+}
+
 echo json_encode($arreglo);
-
-?>

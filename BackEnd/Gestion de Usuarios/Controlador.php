@@ -175,18 +175,25 @@ class Controlador{
         return $permiso;
     }
 
-    /* Comprobar Usuario */
-
-    public function comprobarUsuario(String $username)
-    {
-        $usuario = $this->base->comprobarUsuario($username);
-        return $usuario;
-    }
-
 
     /********************************/
     /*           TRAER TABLA        */
     /********************************/
+
+    /* Traer Usuarios Especificos */
+
+    public function seleccionarAlumo(String $username){
+        return $this->base->seleccionarAlumno($username);
+    }
+
+    public function seleccionarInstructor(String $username){
+        return $this->base->seleccionarInstructor($username);
+    }
+
+    public function seleccionarAdministrador(String $username){
+        return $this->base->seleccionarAdmin($username);
+    }
+    
 
     /* Traer Tabla Usuarios*/
 
