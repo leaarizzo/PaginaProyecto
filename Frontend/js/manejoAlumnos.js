@@ -39,6 +39,13 @@ function filaNueva(infoPersona, pos) {
 
 
 function agregarAlumno() {
+	
+	let verifica = verificarCedula();
+
+	if (verifica == "false") {
+		alert("Esa cedula es Inexistente");
+		return;
+	} 
 	$.ajax({
 		url: '../../../../BackEnd/Gestion de Usuarios/altaAlumnos.php',
 		method: 'POST',
@@ -171,38 +178,19 @@ function cerrarModalAgregar() {
     $('#addModal').css("display", "none");
 }
 
-function agregarAlumno() {
-    $.ajax({
-        url: '../../../../BackEnd/Gestion de Usuarios/altaAlumnos.php',
-        method: 'POST',
-        data: {
-            documento: $('#txtNuevoDocumento').val(),
-            username: $('#txtNuevoUsername').val(),
-            nombre: $('#txtNuevoNombre').val(),
-            apellido: $('#txtNuevoApellido').val(),
-            fechaNacimiento: $('#txtNuevaFechaNacimiento').val(),
-            telefono: $('#txtNuevoTelefono').val(),
-            correo: $('#txtNuevoCorreo').val(),
-            password: $('#txtNuevaPassword').val(),
-            catA: $('#txtNuevoA').is(':checked') ? 1 : 0,
-            catB: $('#txtNuevoB').is(':checked') ? 1 : 0,
-            catC: $('#txtNuevoC').is(':checked') ? 1 : 0
-        },
-        success: function (respuesta) {
-            console.log(respuesta);
-            // Update the datosUsuarios array and add a new row to the table
-            traerUsuarios().then(dato => {
-                // Clear the table first
-                $("#tablaPersonas").find("tr:gt(0)").remove();
-                datosUsuarios = dato;
-                for (var i = 0; i < dato.length; i++) {
-                    filaNueva(dato[i], i);
-                }
-            });
-            cerrarModalAgregar();
-        },
-        error: function (respuesta) {
-            console.log(respuesta);
-        },
-    });
+function verificarCedula() {
+	let verifico = false;
+
+	$.ajax({
+		url: '../../../../BackEnd/Gestion de Usuarios/verificadorCI.php',
+		method: 'POST',
+		data: {
+			cedula: $('#txtNuevoDocumento').val()
+		},
+		success: function (response) {
+			verifico = response;
+		},
+		async: false
+	});
+	return verifico;
 }

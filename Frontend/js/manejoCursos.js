@@ -38,6 +38,19 @@ function filaNueva(infoCurso, pos) {
 
 
 function agregarCursos() {
+	
+	let verificaA = verificarCedulaAlumno();
+	let verificaI = verificarCedulaInstructor();
+
+	if (verificaA == "false") {
+		alert("Esa cedula Estudiante es Inexistente");
+		return;
+	} 
+
+	if (verificaI == "false") {
+		alert("Esa cedula de Instructor es Inexistente");
+		return;
+	}
 	$.ajax({
 		url: '../../../../BackEnd/Gestion de Usuarios/altaCurso.php',
 		method: 'POST',
@@ -163,5 +176,39 @@ function mostrarModalAgregar() {
 
 function cerrarModalAgregar() {
 	$('#addModal').css("display", "none");
+}
+
+function verificarCedulaAlumno() {
+	let verifico = false;
+
+	$.ajax({
+		url: '../../../../BackEnd/Gestion de Usuarios/verificadorCI.php',
+		method: 'POST',
+		data: {
+			cedula: $('#txtDocumentoAlumno').val()
+		},
+		success: function (response) {
+			verifico = response;
+		},
+		async: false
+	});
+	return verifico;
+}
+
+function verificarCedulaInstructor() {
+	let verifico = false;
+
+	$.ajax({
+		url: '../../../../BackEnd/Gestion de Usuarios/verificadorCI.php',
+		method: 'POST',
+		data: {
+			cedula: $('#txtDocumentoInstructor').val()
+		},
+		success: function (response) {
+			verifico = response;
+		},
+		async: false
+	});
+	return verifico;
 }
 

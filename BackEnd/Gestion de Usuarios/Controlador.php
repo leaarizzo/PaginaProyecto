@@ -154,10 +154,6 @@ class Controlador{
         $this->base->modificarCurso($codigoClase, $dato, $nuevo);
     }
 
-    public function modificarPregunta($codigoPregunta, $nuevo)
-    {
-        $this->base->modificarPreguntas($codigoPregunta, $nuevo);
-    }
 
     /********************************/
     /*           LOG IN             */

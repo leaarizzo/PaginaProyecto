@@ -38,9 +38,9 @@ function filaNueva(infoPersona, pos) {
 
 function agregarAdministrador() {
 
-	let isVerified = verificarCedula();
+	let verifica = verificarCedula();
 
-	if (isVerified == "false") {
+	if (verifica == "false") {
 		alert("Esa cedula es Inexistente");
 		return;
 	} 

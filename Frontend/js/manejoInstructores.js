@@ -35,49 +35,6 @@ function filaNueva(infoPersona, pos) {
     $("#tablaPersonas").append(fila);
 }
 
-
-function agregarAlumno() {
-	$.ajax({
-		url: '../../../../BackEnd/Gestion de Usuarios/altaInstructor.php',
-		method: 'POST',
-		data: {
-			documento: $('#txtNuevoDocumento').val(),
-			username: $('#txtNuevoUsername').val(),
-			nombre: $('#txtNuevoNombre').val(),
-			apellido: $('#txtNuevoApellido').val(),
-			fechaNacimiento: $('#txtNuevaFechaNacimiento').val(),
-			telefono: $('#txtNuevoTelefono').val(),
-			correo: $('#txtNuevoCorreo').val(),
-			password: $('#txtNuevaPassword').val(),
-			claseA: $('#txtClaseA').val(),
-			claseB: $('#txtClaseB').val(),
-			claseC: $('#txtClaseC').val(),
-			lunes: $('#txtLunes').val(),
-			martes: $('#txtMartes').val(),
-			miercoles: $('#txtMiercoles').val(),
-			jueves: $('#txtJueves').val(),
-			viernes: $('#txtViernes').val(),
-			sabado: $('#txtSabado').val(),
-		},
-		success: function (respuesta) {
-			console.log(respuesta);
-
-			traerUsuarios().then(dato => {
-				// Clear the table first
-				$("#tablaPersonas").find("tr:gt(0)").remove();
-				datosUsuarios = dato;
-				for (var i = 0; i < dato.length; i++) {
-					filaNueva(dato[i], i);
-				}
-			});
-			cerrarModalAgregar();
-		},
-		error: function (respuesta) {
-			console.log(respuesta);
-			
-		},
-	});
-}
 function eliminar(pos) {
 	if (confirm('¿Está seguro de que desea eliminar este instructor?')) {
 	$.ajax({
@@ -176,6 +133,13 @@ function cerrarModalAgregar() {
 }
 
 function agregarInstructor() {
+	
+	let verifica = verificarCedula();
+
+	if (verifica == "false") {
+		alert("Esa cedula es Inexistente");
+		return;
+	}
     $.ajax({
         url: '../../../../BackEnd/Gestion de Usuarios/altaInstructor.php',
         method: 'POST',
