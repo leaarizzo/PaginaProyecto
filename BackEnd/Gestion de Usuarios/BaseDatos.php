@@ -601,7 +601,7 @@ class BaseDatos
 
     public function seleccionarAlumnos()
     {
-        $resultadoAlumno = mysqli_query($this->conexion, "SELECT * FROM TablaAlumnos");
+        $resultadoAlumno = mysqli_query($this->conexion, "SELECT * FROM tablaalumnos");
         $arreglo = mysqli_fetch_all($resultadoAlumno, MYSQLI_ASSOC);
         return $arreglo;
     }
@@ -616,7 +616,7 @@ class BaseDatos
 
     public function seleccionarInstructores()
     {
-        $resultadoInstructores = mysqli_query($this->conexion, "select * from tablaInstructores");
+        $resultadoInstructores = mysqli_query($this->conexion, "select * from tablainstructores");
         $arreglo = mysqli_fetch_all($resultadoInstructores, MYSQLI_ASSOC);
         return $arreglo;
     }
