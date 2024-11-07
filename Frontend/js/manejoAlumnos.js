@@ -14,7 +14,7 @@ traerUsuarios().then(dato => {
 	for (var i = 0; i < dato.length; i++) {
 		filaNueva(dato[i], i);
 	}
-
+	
 	datosUsuarios = dato;
 
 });
